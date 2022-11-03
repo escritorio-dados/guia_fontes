@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  # Banco de dados usuarios
+  pg_guia_fontes:
+    image: "postgres:13.3-alpine"
+    container_name: pg_guia_fontes
+    tty: true
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_DB=${POSTGRESS_DATABASE}"
+      - "POSTGRES_USER=${POSTGRESS_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRESS_PASSWORD}"
+    networks:
+      - guia_fontes
+
+volumes:
+  pg_data:
+    name: guia_fontes_pg_data
+
+networks:
+  guia_fontes:
+    name: 'guia_fontes'
+    driver: 'bridge'
