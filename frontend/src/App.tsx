@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createTheme, ThemeProvider, CssBaseline, GlobalStyles } from '@mui/material';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
+import { Footer } from '#shared/components/Footer';
+import { NavBar } from '#shared/components/NavBar';
+import { Router } from '#shared/routes';
+import { ScrollToTop } from '#shared/routes/scrollToTop';
+import { cssGlobal } from '#shared/styles/global.styles';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: `"Poppins", "Helvetica", "Arial", sans-serif`,
+    fontSize: 12,
+  },
+});
+
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
+      <GlobalStyles styles={cssGlobal} />
+
+      <BrowserRouter>
+        <ScrollToTop />
+
+        <NavBar />
+
+        <Router />
+
+        <Footer />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
-
-export default App;
