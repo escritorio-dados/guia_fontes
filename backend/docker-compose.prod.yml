@@ -1,6 +1,25 @@
 version: "3"
 
 services:
+  # Api
+  api_guia_fontes:
+    build:
+      context: .
+    image: thiagomf712/api_guia_fontes
+    container_name: api_guia_fontes
+    entrypoint: dockerize -wait tcp://pg_guia_fontes:5432 -timeout 20s docker-entrypoint.sh
+    command: node dist/main.js
+    tty: true
+    ports:
+      - "3333:3333"
+    depends_on:
+      - pg_guia_fontes
+    environment:
+      - "POSTGRESS_HOST=pg_guia_fontes"
+    networks:
+      - guia_fontes
+
+  # Banco de Dados Postgres
   pg_guia_fontes:
     image: "postgres:13.3-alpine"
     container_name: pg_guia_fontes
