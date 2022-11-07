@@ -6,6 +6,8 @@ import { Faq } from '#modules/home/pages/FAQ';
 import { Home } from '#modules/home/pages/Home';
 import { UsoResponsavel } from '#modules/home/pages/UsoResponsavel';
 
+import { AdminRoutes } from './admin';
+
 export function Router() {
   return (
     <Routes>
@@ -18,6 +20,8 @@ export function Router() {
       <Route path="/contato" element={<Contato />} />
 
       <Route path="/faq" element={<Faq />} />
+
+      <Route path="/admin/*" element={<AdminRoutes />} />
     </Routes>
   );
 }
