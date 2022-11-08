@@ -1,9 +1,8 @@
 import { createTheme, ThemeProvider, CssBaseline, GlobalStyles } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Footer } from '#shared/components/Footer';
-import { NavBar } from '#shared/components/NavBar';
-import { Router } from '#shared/routes';
+import { SiteLayout } from '#shared/components/SiteLayout';
+import { AppProvider } from '#shared/hooks';
 import { ScrollToTop } from '#shared/routes/scrollToTop';
 import { cssGlobal } from '#shared/styles/global.styles';
 
@@ -21,15 +20,13 @@ export function App() {
 
       <GlobalStyles styles={cssGlobal} />
 
-      <BrowserRouter>
-        <ScrollToTop />
+      <AppProvider>
+        <BrowserRouter>
+          <ScrollToTop />
 
-        <NavBar />
-
-        <Router />
-
-        <Footer />
-      </BrowserRouter>
+          <SiteLayout />
+        </BrowserRouter>
+      </AppProvider>
     </ThemeProvider>
   );
 }

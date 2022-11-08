@@ -2,7 +2,6 @@ import { isBefore, fromUnixTime } from 'date-fns';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { createContext, useCallback, useState, useContext, ReactNode, useMemo } from 'react';
 
-import { Loading } from '#shared/components/Loading';
 import { usePost } from '#shared/services/useAxios';
 
 import { IUser } from '#modules/admin/users/types/IUser';
@@ -67,7 +66,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
   const { toast } = useToast();
 
-  const { loading, send: auth } = usePost<IAuthResponse, IAuthInput>('/auth');
+  const { send: auth } = usePost<IAuthResponse, IAuthInput>('/auth');
 
   const signIn = useCallback(
     async (authInput: IAuthInput) => {
@@ -105,19 +104,13 @@ export function AuthProvider({ children }: IAuthProviderProps) {
     };
   }, [data.user, signIn, signOut]);
 
-  return (
-    <AuthContext.Provider value={authValue}>
-      <Loading loading={loading} />
-
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth(): IAuthContextData {
   const context = useContext(AuthContext);
 
-  if (context == null) {
+  if (Object.keys(context).length === 0) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
 

@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 
+import { useLoading } from '#shared/hooks/loading';
 import { getError } from '#shared/utils/getError';
 
 import { axiosClient } from './axiosClient';
@@ -13,7 +14,6 @@ interface ISendWithInput<T> {
 interface IUseWithoutInput<T> {
   data?: T;
   error: string;
-  loading: boolean;
   send: (conf?: AxiosRequestConfig) => Promise<void>;
 }
 
@@ -23,12 +23,10 @@ type IUseGet<T> = IUseWithoutInput<T> & {
 };
 
 interface IUseWithInput<T, D> {
-  loading: boolean;
   send: (input: D, conf?: AxiosRequestConfig) => Promise<ISendWithInput<T>>;
 }
 
 interface IUseDelete<T> {
-  loading: boolean;
   send: () => Promise<ISendWithInput<T>>;
 }
 
@@ -41,11 +39,12 @@ interface IUseGetParams {
 export function useGet<T>({ url, lazy, config }: IUseGetParams): IUseGet<T> {
   const [data, setData] = useState<T>();
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(lazy !== true);
+
+  const { startLoading, stopLoading } = useLoading(lazy !== true);
 
   const send = useCallback(
     async (conf?: AxiosRequestConfig) => {
-      setLoading(true);
+      startLoading();
 
       try {
         const response = await axiosClient.get<T>(conf?.url ?? url, conf);
@@ -66,14 +65,14 @@ export function useGet<T>({ url, lazy, config }: IUseGetParams): IUseGet<T> {
           return newError;
         });
       } finally {
-        setLoading(false);
+        stopLoading();
       }
     },
-    [url],
+    [startLoading, stopLoading, url],
   );
 
   const sendGet = async (conf?: AxiosRequestConfig) => {
-    setLoading(true);
+    startLoading();
 
     let dataGet;
     let errorGet;
@@ -86,7 +85,7 @@ export function useGet<T>({ url, lazy, config }: IUseGetParams): IUseGet<T> {
       errorGet = getError(e);
     }
 
-    setLoading(false);
+    stopLoading();
 
     return { data: dataGet, error: errorGet };
   };
@@ -100,14 +99,14 @@ export function useGet<T>({ url, lazy, config }: IUseGetParams): IUseGet<T> {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
-  return { data, error, loading, send, updateData: setData, sendGet };
+  return { data, error, send, updateData: setData, sendGet };
 }
 
 export function usePost<T, D>(url: string, config?: AxiosRequestConfig): IUseWithInput<T, D> {
-  const [loading, setLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   const send = async (input: D, conf?: AxiosRequestConfig) => {
-    setLoading(true);
+    startLoading();
 
     let data;
     let error;
@@ -123,19 +122,19 @@ export function usePost<T, D>(url: string, config?: AxiosRequestConfig): IUseWit
       error = getError(e);
     }
 
-    setLoading(false);
+    stopLoading();
 
     return { data, error };
   };
 
-  return { loading, send };
+  return { send };
 }
 
 export function usePut<T, D>(url: string, config?: AxiosRequestConfig): IUseWithInput<T, D> {
-  const [loading, setLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   const send = async (input: D, conf?: AxiosRequestConfig) => {
-    setLoading(true);
+    startLoading();
 
     let data;
     let error;
@@ -148,19 +147,19 @@ export function usePut<T, D>(url: string, config?: AxiosRequestConfig): IUseWith
       error = getError(e);
     }
 
-    setLoading(false);
+    stopLoading();
 
     return { data, error };
   };
 
-  return { loading, send };
+  return { send };
 }
 
 export function usePatch<T, D>(url: string, config?: AxiosRequestConfig): IUseWithInput<T, D> {
-  const [loading, setLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   const send = async (input: D, conf?: AxiosRequestConfig) => {
-    setLoading(true);
+    startLoading();
 
     let data;
     let error;
@@ -176,19 +175,19 @@ export function usePatch<T, D>(url: string, config?: AxiosRequestConfig): IUseWi
       error = getError(e);
     }
 
-    setLoading(false);
+    stopLoading();
 
     return { data, error };
   };
 
-  return { loading, send };
+  return { send };
 }
 
 export function useDelete<T = void>(url: string, config?: AxiosRequestConfig): IUseDelete<T> {
-  const [loading, setLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   const send = async (conf?: AxiosRequestConfig) => {
-    setLoading(true);
+    startLoading();
 
     let error;
 
@@ -198,10 +197,10 @@ export function useDelete<T = void>(url: string, config?: AxiosRequestConfig): I
       error = getError(e);
     }
 
-    setLoading(false);
+    stopLoading();
 
     return { error };
   };
 
-  return { loading, send };
+  return { send };
 }

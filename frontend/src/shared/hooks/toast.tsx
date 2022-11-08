@@ -65,7 +65,7 @@ export function ToastProvider({ children }: IToastProviderProps) {
 export function useToast(): IToastContextData {
   const context = useContext(ToastContext);
 
-  if (context == null) {
+  if (Object.keys(context).length === 0) {
     throw new Error('useToast must be used within an ToastProvider');
   }
 

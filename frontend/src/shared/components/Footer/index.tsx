@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '#static/logo.svg';
 
@@ -7,6 +7,9 @@ import { LinksContainer, Logo, FooterContainer, LogoContainer } from './styles';
 
 export function Footer() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  if (location.pathname.includes('/admin')) return <></>;
 
   return (
     <FooterContainer>

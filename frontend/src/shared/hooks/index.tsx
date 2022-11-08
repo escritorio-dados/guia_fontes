@@ -1,6 +1,9 @@
 import { ReactNode } from 'react';
 
 import { AuthProvider } from './auth';
+import { LoadingProvider } from './loading';
+import { NavBarProvider } from './navBar';
+import { TitleProvider } from './title';
 import { ToastProvider } from './toast';
 
 interface IAppProvider {
@@ -9,8 +12,14 @@ interface IAppProvider {
 
 export function AppProvider({ children }: IAppProvider) {
   return (
-    <ToastProvider>
-      <AuthProvider>{children}</AuthProvider>
-    </ToastProvider>
+    <LoadingProvider>
+      <ToastProvider>
+        <NavBarProvider>
+          <TitleProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </TitleProvider>
+        </NavBarProvider>
+      </ToastProvider>
+    </LoadingProvider>
   );
 }
