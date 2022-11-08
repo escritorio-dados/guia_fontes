@@ -1,11 +1,30 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { HomeAdmin } from '#modules/admin/shared/pages/HomeAdmin';
+import { UsersRoutes } from '#modules/admin/users/routes';
+
+import { PrivateRoute } from './private';
 
 export function AdminRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<HomeAdmin />} />
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <HomeAdmin />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/users/*"
+        element={
+          <PrivateRoute>
+            <UsersRoutes />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }

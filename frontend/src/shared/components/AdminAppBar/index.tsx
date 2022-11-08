@@ -1,5 +1,5 @@
 import { Menu as IconMenu, Person } from '@mui/icons-material';
-import { Box, Tooltip } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,6 @@ import { useNavBar } from '#shared/hooks/navBar';
 import { useTitle } from '#shared/hooks/title';
 import { TextEllipsis } from '#shared/styledComponents/common';
 
-import { CustomButton } from '../CustomButton';
 import { CustomIconButton } from '../CustomIconButton';
 import { CustomPopover } from '../CustomPopover';
 import { CustomTooltip } from '../CustomTooltip';
@@ -61,28 +60,18 @@ export function AdminAppBar() {
 
         {logged && (
           <CustomPopover help="Usuario" icon={<Person />}>
-            <Tooltip title={user.nome}>
+            <CustomTooltip title={user.nome}>
               <MenuHeader>{user.nome}</MenuHeader>
-            </Tooltip>
+            </CustomTooltip>
 
             <MenuOptions>
-              <CustomButton
-                variant="text"
-                marginType="no-margin"
-                size="small"
-                onClick={() => navigate('/users/changePassword')}
-              >
+              <Button fullWidth variant="text" onClick={() => navigate('/users/changePassword')}>
                 Alterar Senha
-              </CustomButton>
+              </Button>
 
-              <CustomButton
-                variant="text"
-                size="small"
-                marginType="no-margin"
-                onClick={handleSignOut}
-              >
+              <Button fullWidth variant="text" onClick={handleSignOut}>
                 Sair
-              </CustomButton>
+              </Button>
             </MenuOptions>
           </CustomPopover>
         )}

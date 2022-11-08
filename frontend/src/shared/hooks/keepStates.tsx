@@ -107,8 +107,7 @@ export function KeepStatesProvider({ children }: IKeepStatesProviderProps) {
 
   const getState = useCallback(
     ({ category, key, defaultValue }: IGetStatesParams) => {
-      const stateCategory =
-        storageStates[category] != null ? storageStates[category] : sessionStates[category];
+      const stateCategory = storageStates[category] ?? sessionStates[category];
 
       const value = stateCategory != null ? stateCategory[key] : undefined;
 

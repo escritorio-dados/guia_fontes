@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { AuthProvider } from './auth';
+import { KeepStatesProvider } from './keepStates';
 import { LoadingProvider } from './loading';
 import { NavBarProvider } from './navBar';
 import { TitleProvider } from './title';
@@ -13,13 +14,15 @@ interface IAppProvider {
 export function AppProvider({ children }: IAppProvider) {
   return (
     <LoadingProvider>
-      <ToastProvider>
-        <NavBarProvider>
-          <TitleProvider>
-            <AuthProvider>{children}</AuthProvider>
-          </TitleProvider>
-        </NavBarProvider>
-      </ToastProvider>
+      <KeepStatesProvider>
+        <ToastProvider>
+          <NavBarProvider>
+            <TitleProvider>
+              <AuthProvider>{children}</AuthProvider>
+            </TitleProvider>
+          </NavBarProvider>
+        </ToastProvider>
+      </KeepStatesProvider>
     </LoadingProvider>
   );
 }

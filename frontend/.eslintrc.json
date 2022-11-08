@@ -82,6 +82,8 @@
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/consistent-type-assertions": "off",
     "@typescript-eslint/naming-convention": "off",
+    "import/no-duplicates": "off",
+    "react/prop-types": "off",
     "@typescript-eslint/no-misused-promises": [
       "error",
       {

@@ -3,7 +3,6 @@ import { css } from '@mui/material';
 export const cssGlobal = css(css`
   #root {
     min-height: 100vh;
-    position: relative;
     display: flex;
     flex-direction: column;
   }

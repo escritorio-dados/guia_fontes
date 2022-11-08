@@ -1,4 +1,7 @@
 import { createTheme, ThemeProvider, CssBaseline, GlobalStyles } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns as DateAdapter } from '@mui/x-date-pickers/AdapterDateFns';
+import { ptBR } from 'date-fns/locale';
 import { BrowserRouter } from 'react-router-dom';
 
 import { SiteLayout } from '#shared/components/SiteLayout';
@@ -24,7 +27,9 @@ export function App() {
         <BrowserRouter>
           <ScrollToTop />
 
-          <SiteLayout />
+          <LocalizationProvider dateAdapter={DateAdapter} adapterLocale={ptBR}>
+            <SiteLayout />
+          </LocalizationProvider>
         </BrowserRouter>
       </AppProvider>
     </ThemeProvider>

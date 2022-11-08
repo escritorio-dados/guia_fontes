@@ -4,6 +4,10 @@ export const AppBarStyled = styled(AppBar)`
   background: #032860;
   height: 4rem;
   border-bottom: 1px solid #fff;
+
+  * {
+    color: #fff;
+  }
 `;
 
 export const ToolbarStyled = styled(Toolbar)`
@@ -16,7 +20,7 @@ export const ToolbarStyled = styled(Toolbar)`
 export const MenuHeader = styled(Box)`
   color: #032860;
   padding: 0.7rem;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #032860;
 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -24,9 +28,8 @@ export const MenuHeader = styled(Box)`
 `;
 
 export const MenuOptions = styled(Box)`
-  button: {
-    display: block;
-    width: 100%;
-    text-transform: none;
+  button {
+    color: #032860;
+    padding: 0.8rem 0.5rem;
   }
 `;
