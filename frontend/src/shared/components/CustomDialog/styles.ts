@@ -26,9 +26,8 @@ export const Title = styled(Box)`
 export const Content = styled(Box)`
   overflow: auto;
   padding: 1.5rem;
-  background: ${({ theme }) => theme.palette.background.paper};
+  background: #eee;
 
-  border: 1px solid ${({ theme }) => theme.palette.divider};
   border-top: 0px;
 
   border-radius: 0 0 5px 5px;

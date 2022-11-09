@@ -34,6 +34,7 @@ type ITableRowStyled = TableRowProps & { component: string };
 
 export const TableRowStyled = styled(TableRow)<ITableRowStyled>`
   transition: background-color 0.2s;
+  background-color: #eee;
 
   &:hover {
     background-color: #ddd;

@@ -66,7 +66,7 @@ export class UsersController {
 
   @Patch('/me/password')
   async changeMyPassword(@Body() input: ChangePasswordUserDto, @Request() { user }: ICurrentUser) {
-    return await this.updateUserService.change_password({
+    return await this.updateUserService.changePassword({
       ...input,
       id: user.id,
     });

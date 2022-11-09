@@ -52,7 +52,7 @@ export class FindAllUserService {
 
     const sortConfig: ISortConfig = {
       id: { field: 'id', alias: ['user.'] },
-      name: { field: 'name', alias: ['user.'] },
+      nome: { field: 'nome', alias: ['user.'] },
       email: { field: 'email', alias: ['user.'] },
       updated_at: { field: 'updated_at', alias: ['user.'] },
       created_at: { field: 'created_at', alias: ['user.'] },

@@ -38,7 +38,7 @@ export const defaultApiConfigUsers: IPaginationConfig<IUserFilters> = {
 };
 
 const sortTranslator: Record<string, string> = {
-  name: 'Nome',
+  nome: 'Nome',
   email: 'Email',
   updated_at: 'Data de Atualização',
   created_at: 'Data de Criação',

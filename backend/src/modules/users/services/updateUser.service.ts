@@ -21,7 +21,7 @@ export class UpdateUserService {
     private readonly hashProvider: HashProvider,
   ) {}
 
-  async change_password({ id, newPassword, oldPassword }: IChangePasswordUser) {
+  async changePassword({ id, newPassword, oldPassword }: IChangePasswordUser) {
     const user = await this.commonUserService.getUser({
       id,
     });
