@@ -84,6 +84,7 @@
     "@typescript-eslint/naming-convention": "off",
     "import/no-duplicates": "off",
     "react/prop-types": "off",
+    "no-console": "warn",
     "@typescript-eslint/no-misused-promises": [
       "error",
       {

@@ -6,9 +6,13 @@ export const Title = styled(Box)`
   display: flex;
   align-items: center;
   padding: 0.25rem;
-  background: ${({ theme }) => theme.palette.secondary.main};
+  background: #032860;
+  color: #fff;
 
-  border: 1px solid ${({ theme }) => theme.palette.divider};
+  svg {
+    color: #fff;
+  }
+
   border-bottom: 0px;
   border-radius: 5px 5px 0 0;
 

@@ -3,7 +3,6 @@ import { Paper, styled, TableCell, TableRow, TableRowProps } from '@mui/material
 export const TableContainerStyled = styled(Paper)`
   margin: auto;
 
-  border: 2px solid #333;
   border-radius: 5px;
 
   .table-container {
@@ -12,12 +11,13 @@ export const TableContainerStyled = styled(Paper)`
 `;
 
 export const TableCellHeader = styled(TableCell)`
-  background: ${({ theme }) => theme.palette.secondary.main};
+  background: #032860;
+  color: #fff;
 
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #fff;
 
   & + div {
-    border-left: 1px solid #333;
+    border-left: 1px solid #fff;
   }
 `;
 
@@ -36,6 +36,6 @@ export const TableRowStyled = styled(TableRow)<ITableRowStyled>`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: #aaa;
+    background-color: #ddd;
   }
 `;

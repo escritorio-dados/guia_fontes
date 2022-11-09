@@ -7,6 +7,7 @@ export const HeaderContainer = styled(Box)`
 
 export const HeaderActions = styled(Box)`
   background: #032860;
+  color: #fff;
   border-radius: 5px 5px 0 0;
 
   min-height: 4rem;
@@ -16,6 +17,10 @@ export const HeaderActions = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  svg {
+    color: #fff;
+  }
 `;
 
 export const HeaderFilter = styled(Collapse)`
@@ -25,16 +30,21 @@ export const HeaderFilter = styled(Collapse)`
 `;
 
 export const FooterContainer = styled(Box)`
-  background: ${({ theme }) => theme.palette.secondary.main};
+  background: #032860;
   min-height: 4rem;
   padding: 1rem;
+  color: #fff;
 
-  border-top: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: 0 0 5px 5px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  button {
+    color: #fff;
+    border-color: #fff;
+  }
 `;
 
 export const ActiveFiltersNumber = styled(Badge)`

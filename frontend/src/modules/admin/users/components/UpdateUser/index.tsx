@@ -88,7 +88,12 @@ export function UpdateUserModal({ closeModal, user_id, openModal, updateList }: 
               label="Senha Nova"
               type="password"
               placeholder="Mantenha em branco para não alterar"
-              autoComplete="current-password"
+              inputProps={{
+                autocomplete: 'new-password',
+                form: {
+                  autocomplete: 'off',
+                },
+              }}
               control={control}
               errors={errors.password}
             />
@@ -98,7 +103,12 @@ export function UpdateUserModal({ closeModal, user_id, openModal, updateList }: 
               label="Confirmar Senha"
               type="password"
               placeholder="Mantenha em branco para não alterar"
-              autoComplete="current-password"
+              inputProps={{
+                autocomplete: 'new-password',
+                form: {
+                  autocomplete: 'off',
+                },
+              }}
               control={control}
               errors={errors.confirmPassword}
             />

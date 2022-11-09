@@ -1,6 +1,6 @@
 export type IPagingResult<T> =
   | {
-      pagination: { page: number; total_results: number; total_pages: number };
+      pagination: { page: number; totalResults: number; totalPages: number };
       data: T[];
     }
   | undefined;

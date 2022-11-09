@@ -4,8 +4,9 @@ import { DateTimePicker } from '@mui/x-date-pickers';
 import { useMemo } from 'react';
 import { Control, Controller, FieldError } from 'react-hook-form';
 
-import { CustomButton } from '#shared/components/CustomButton';
 import { CustomIconButton } from '#shared/components/CustomIconButton';
+
+import { StyledButton } from './styles';
 
 interface IFormDatePicker {
   name: string;
@@ -59,24 +60,31 @@ export function FormDateTimePicker({
           disabled={disabled}
           showToolbar
           showDaysOutsideCurrentMonth
+          toolbarTitle="Selecionar Data e Hora"
           components={{
             ActionBar: ({ onSetToday, onClear }) => (
               <Box
                 display="flex"
                 sx={(theme) => ({ borderTop: `1px solid ${theme.palette.divider}` })}
               >
-                <CustomButton
+                <StyledButton
                   variant="text"
-                  size="medium"
+                  size="small"
                   onClick={onSetToday}
                   marginType="no-margin"
                 >
                   Hoje
-                </CustomButton>
+                </StyledButton>
 
-                <CustomButton variant="text" size="medium" onClick={onClear} marginType="no-margin">
+                <StyledButton
+                  variant="text"
+                  size="small"
+                  onClick={onClear}
+                  marginType="no-margin"
+                  sx={{ borderLeft: '1px solid #fff' }}
+                >
                   Limpar
-                </CustomButton>
+                </StyledButton>
               </Box>
             ),
             OpenPickerIcon: () => <Today fontSize="medium" />,

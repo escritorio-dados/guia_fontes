@@ -13,7 +13,7 @@ interface ISendWithInput<T> {
 
 interface IUseWithoutInput<T> {
   data?: T;
-  error: string;
+  error?: string;
   send: (conf?: AxiosRequestConfig) => Promise<void>;
 }
 
@@ -38,9 +38,9 @@ interface IUseGetParams {
 
 export function useGet<T>({ url, lazy, config }: IUseGetParams): IUseGet<T> {
   const [data, setData] = useState<T>();
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string>();
 
-  const { startLoading, stopLoading } = useLoading(lazy !== true);
+  const { startLoading, stopLoading } = useLoading();
 
   const send = useCallback(
     async (conf?: AxiosRequestConfig) => {
@@ -91,7 +91,7 @@ export function useGet<T>({ url, lazy, config }: IUseGetParams): IUseGet<T> {
   };
 
   useEffect(() => {
-    if (lazy !== true) {
+    if (lazy === true) {
       return;
     }
 

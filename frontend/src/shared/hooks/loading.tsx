@@ -34,15 +34,11 @@ export function LoadingProvider({ children }: ILoadingProviderProps) {
   );
 }
 
-export function useLoading(loading?: boolean): ILoadingContextData {
+export function useLoading(): ILoadingContextData {
   const context = useContext(LoadingContext);
 
   if (Object.keys(context).length === 0) {
     throw new Error('useLoading must be used within an LoadingProvider');
-  }
-
-  if (loading === true) {
-    context.startLoading();
   }
 
   return context;

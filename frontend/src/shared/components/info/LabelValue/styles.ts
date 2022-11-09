@@ -10,6 +10,6 @@ export const FieldValueContainer = styled(Box)`
   strong {
     font-weight: bold;
     margin-right: 0.5rem;
-    color: ${({ theme }) => theme.palette.primary.main};
+    color: #df5a35;
   }
 `;

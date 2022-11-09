@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Typography } from '@mui/material';
 import { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -57,6 +58,8 @@ export function ChangePasswordUser() {
   return (
     <>
       <ChangePasswordContainer elevation={3}>
+        <Typography component="h2">Alterar Senha</Typography>
+
         <form onSubmit={handleSubmit(handleChangePassword)} noValidate>
           <FormTextField
             required
@@ -66,6 +69,12 @@ export function ChangePasswordUser() {
             label="Senha Atual"
             marginType="no-margin"
             errors={errors.oldPassword}
+            inputProps={{
+              autocomplete: 'new-password',
+              form: {
+                autocomplete: 'off',
+              },
+            }}
           />
 
           <FormTextField
@@ -75,6 +84,12 @@ export function ChangePasswordUser() {
             name="newPassword"
             label="Nova Senha"
             errors={errors.newPassword}
+            inputProps={{
+              autocomplete: 'new-password',
+              form: {
+                autocomplete: 'off',
+              },
+            }}
           />
 
           <FormTextField
@@ -84,6 +99,12 @@ export function ChangePasswordUser() {
             name="confirmPassword"
             label="Confirmar Nova Senha"
             errors={errors.confirmPassword}
+            inputProps={{
+              autocomplete: 'new-password',
+              form: {
+                autocomplete: 'off',
+              },
+            }}
           />
 
           <CustomButton type="submit">Alterar a Senha</CustomButton>

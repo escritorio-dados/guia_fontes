@@ -26,7 +26,7 @@ function CustomPaper(props: PaperProps) {
       handle="#modal-draggable"
       cancel={'[class*="MuiDialogContent-root"]'}
     >
-      <Paper ref={nodeRef} {...props} />
+      <Paper ref={nodeRef} {...props} sx={{ borderRadius: '5px' }} />
     </Draggable1>
   );
 }

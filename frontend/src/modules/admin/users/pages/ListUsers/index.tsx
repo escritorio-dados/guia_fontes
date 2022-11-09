@@ -234,8 +234,8 @@ export function ListUser() {
         }
         pagination={{
           currentPage: apiConfig.page,
-          totalPages: usersData?.pagination.total_pages ?? 1,
-          totalResults: usersData?.pagination.total_results ?? 0,
+          totalPages: usersData?.pagination.totalPages ?? 1,
+          totalResults: usersData?.pagination.totalResults ?? 0,
           changePage: (page) =>
             setApiConfig(
               updateApiConfig({

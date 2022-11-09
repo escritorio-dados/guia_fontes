@@ -65,7 +65,11 @@ export function AdminAppBar() {
             </CustomTooltip>
 
             <MenuOptions>
-              <Button fullWidth variant="text" onClick={() => navigate('/users/changePassword')}>
+              <Button
+                fullWidth
+                variant="text"
+                onClick={() => navigate('/admin/users/changePassword')}
+              >
                 Alterar Senha
               </Button>
 
