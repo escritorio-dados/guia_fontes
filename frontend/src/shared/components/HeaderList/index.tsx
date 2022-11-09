@@ -64,7 +64,14 @@ export function HeaderList({
             )}
 
             {filterContainer != null && (
-              <ActiveFiltersNumber badgeContent={activeFilters ?? 0} color="primary">
+              <ActiveFiltersNumber
+                badgeContent={activeFilters ?? 0}
+                sx={{
+                  'span.MuiBadge-badge': {
+                    backgroundColor: '#df5a35',
+                  },
+                }}
+              >
                 <CustomIconButton
                   action={() => {
                     updateState({

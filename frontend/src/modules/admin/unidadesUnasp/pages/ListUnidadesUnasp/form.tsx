@@ -5,26 +5,29 @@ import { FilterListForm, IListFilter } from '#shared/components/FilterListForm';
 import { FormDateTimePicker } from '#shared/components/form/FormDateTimePicker';
 import { FormTextField } from '#shared/components/form/FormTextField';
 
-import { IUserFilters } from '../../types/IUser';
+import { IUnidadeUnaspFilters } from '../../types/IUnidadeUnasp';
 
-export const defaultUserFilter: IUserFilters = {
+export const defaultUnidadeUnaspFilter: IUnidadeUnaspFilters = {
   nome: '',
-  email: '',
+  contatoAssesoria: '',
   min_updated: null,
   max_updated: null,
 };
 
-export function ListUsersFilter({ apiConfig, ...props }: IListFilter<IUserFilters>) {
+export function ListUnidadeUnaspsFilter({
+  apiConfig,
+  ...props
+}: IListFilter<IUnidadeUnaspFilters>) {
   const {
     handleSubmit,
     control,
     formState: { errors },
     reset: resetForm,
-  } = useForm<IUserFilters>();
+  } = useForm<IUnidadeUnaspFilters>();
 
   return (
     <FilterListForm
-      defaultFilter={defaultUserFilter}
+      defaultFilter={defaultUnidadeUnaspFilter}
       handleSubmit={handleSubmit}
       resetForm={resetForm}
       {...props}
@@ -44,11 +47,11 @@ export function ListUsersFilter({ apiConfig, ...props }: IListFilter<IUserFilter
         <Grid item lg={4} sm={6} xs={12}>
           <FormTextField
             control={control}
-            name="email"
-            label="E-mail"
+            name="contatoAssesoria"
+            label="Contato Assesoria"
             marginType="no-margin"
-            defaultValue={apiConfig.filters.email}
-            errors={errors.email}
+            defaultValue={apiConfig.filters.contatoAssesoria}
+            errors={errors.contatoAssesoria}
           />
         </Grid>
 

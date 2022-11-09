@@ -25,6 +25,7 @@ export const HeaderActions = styled(Box)`
 
 export const HeaderFilter = styled(Collapse)`
   > div {
+    background: #eee;
     padding: 1rem;
   }
 `;
