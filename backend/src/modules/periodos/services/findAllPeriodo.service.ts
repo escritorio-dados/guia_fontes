@@ -39,7 +39,7 @@ export class FindAllPeriodoService {
       },
       {
         field: 'atual',
-        values: [query.atual],
+        values: [query.atual === true ? 'true' : undefined],
         operation: 'equal',
         alias: ['periodo.'],
       },

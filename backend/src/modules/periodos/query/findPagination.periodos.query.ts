@@ -37,7 +37,7 @@ export class FindPaginationPeriodosQuery {
   @IsBoolean()
   @IsOptional()
   @Transform(transformBooleanApi)
-  atual?: string;
+  atual?: boolean;
 
   @IsDate()
   @IsOptional()
