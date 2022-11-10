@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 
 import {
   IFindLimited,
@@ -11,24 +11,24 @@ import {
 import { configFiltersQuery } from '@shared/utils/filter/configFiltersRepository';
 import { configSortRepository } from '@shared/utils/filter/configSortRepository';
 
-import { UnidadeUnasp } from '../entities/UnidadeUnasp';
+import { Periodo } from '../entities/Periodo';
 
-interface ICreateUnidadeUnasp {
+interface ICreatePeriodo {
   nome: string;
-  contatoAssesoria?: string;
+  atual?: boolean;
 }
 
 @Injectable()
-export class UnidadesUnaspRepository {
+export class PeriodosRepository {
   constructor(
-    @InjectRepository(UnidadeUnasp)
-    private readonly repository: Repository<UnidadeUnasp>,
+    @InjectRepository(Periodo)
+    private readonly repository: Repository<Periodo>,
   ) {}
 
   async findPagination({ sortBy, orderBy, page, filters, customFilters }: IFindPagination) {
     const query = this.repository
-      .createQueryBuilder('unidadeUnasp')
-      .select(['unidadeUnasp.id', 'unidadeUnasp.nome', 'unidadeUnasp.contatoAssesoria'])
+      .createQueryBuilder('periodo')
+      .select(['periodo.id', 'periodo.nome', 'periodo.atual'])
       .take(paginationSizeLarge)
       .skip((page - 1) * paginationSizeLarge);
 
@@ -45,9 +45,9 @@ export class UnidadesUnaspRepository {
 
   async findLimited({ filters, customFilters }: IFindLimited) {
     const query = this.repository
-      .createQueryBuilder('unidadeUnasp')
-      .select(['unidadeUnasp.id', 'unidadeUnasp.nome'])
-      .orderBy('unidadeUnasp.nome', 'ASC')
+      .createQueryBuilder('periodo')
+      .select(['periodo.id', 'periodo.nome'])
+      .orderBy('periodo.nome', 'ASC')
       .take(limitedSize);
 
     configFiltersQuery({
@@ -67,19 +67,27 @@ export class UnidadesUnaspRepository {
     return await this.repository.findOne({ where: { nome } });
   }
 
-  async create(unidadeUnasp: ICreateUnidadeUnasp) {
-    const newUnidadeUnasp = this.repository.create(unidadeUnasp);
-
-    await this.repository.save(newUnidadeUnasp);
-
-    return newUnidadeUnasp;
+  async findAtual() {
+    return await this.repository.findOne({ where: { atual: true } });
   }
 
-  async delete(unidadeUnasp: UnidadeUnasp) {
-    await this.repository.remove(unidadeUnasp);
+  async create(periodo: ICreatePeriodo, manager?: EntityManager) {
+    const repo = manager != null ? manager.getRepository(Periodo) : this.repository;
+
+    const newPeriodo = repo.create(periodo);
+
+    await repo.save(newPeriodo);
+
+    return newPeriodo;
   }
 
-  async save(unidadeUnasp: UnidadeUnasp) {
-    return await this.repository.save(unidadeUnasp);
+  async delete(periodo: Periodo) {
+    await this.repository.remove(periodo);
+  }
+
+  async save(periodo: Periodo, manager?: EntityManager) {
+    const repo = manager != null ? manager.getRepository(Periodo) : this.repository;
+
+    return await repo.save(periodo);
   }
 }

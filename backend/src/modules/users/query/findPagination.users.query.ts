@@ -1,7 +1,7 @@
 import { Transform, Type } from 'class-transformer';
 import { IsDate, IsIn, IsInt, IsNotEmpty, IsOptional, IsPositive } from 'class-validator';
 
-import { transformDatesApi } from '@shared/utils/transformDatesApi';
+import { transformDatesApi } from '@shared/utils/transformApi';
 
 import { User } from '../entities/User';
 

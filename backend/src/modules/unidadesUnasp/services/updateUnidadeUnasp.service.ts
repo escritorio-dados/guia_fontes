@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 
-import { UpdateUnidadeUnaspDto } from '../dtos/updateUnidadeUnasp.dto';
+import { UnidadeUnaspDto } from '../dtos/unidadeUnasp.dto';
 import { UnidadesUnaspRepository } from '../repositories/unidadesUnasp.repository';
 import { CommonUnidadeUnaspService } from './commonUnidadeUnasp.service';
 
-type IUpdateUnidadeUnasp = UpdateUnidadeUnaspDto & { id: string };
+type IUpdateUnidadeUnasp = UnidadeUnaspDto & { id: string };
 
 @Injectable()
 export class UpdateUnidadeUnaspService {

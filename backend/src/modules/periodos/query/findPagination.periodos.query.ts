@@ -1,13 +1,21 @@
 import { Transform, Type } from 'class-transformer';
-import { IsDate, IsIn, IsInt, IsNotEmpty, IsOptional, IsPositive } from 'class-validator';
+import {
+  IsBoolean,
+  IsDate,
+  IsIn,
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsPositive,
+} from 'class-validator';
 
-import { transformDatesApi } from '@shared/utils/transformApi';
+import { transformBooleanApi, transformDatesApi } from '@shared/utils/transformApi';
 
-import { UnidadeUnasp } from '../entities/UnidadeUnasp';
+import { Periodo } from '../entities/Periodo';
 
-const sortFields = ['nome', 'id', 'contatoAssesoria', 'updated_at', 'created_at'];
+const sortFields = ['nome', 'id', 'updated_at', 'created_at'];
 
-export class FindPaginationUnidadesUnaspQuery {
+export class FindPaginationPeriodosQuery {
   @IsInt()
   @IsPositive()
   @IsOptional()
@@ -16,7 +24,7 @@ export class FindPaginationUnidadesUnaspQuery {
 
   @IsIn(sortFields)
   @IsOptional()
-  sort_by: keyof UnidadeUnasp = 'updated_at';
+  sort_by: keyof Periodo = 'updated_at';
 
   @IsIn(['ASC', 'DESC'])
   @IsOptional()
@@ -26,9 +34,10 @@ export class FindPaginationUnidadesUnaspQuery {
   @IsOptional()
   nome?: string;
 
-  @IsNotEmpty()
+  @IsBoolean()
   @IsOptional()
-  contatoAssesoria?: string;
+  @Transform(transformBooleanApi)
+  atual?: string;
 
   @IsDate()
   @IsOptional()

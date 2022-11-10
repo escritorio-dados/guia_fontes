@@ -14,8 +14,7 @@ import {
 
 import { IParamId } from '@shared/types/params';
 
-import { CreateUnidadeUnaspDto } from '../dtos/createUnidadeUnasp.dto';
-import { UpdateUnidadeUnaspDto } from '../dtos/updateUnidadeUnasp.dto';
+import { UnidadeUnaspDto } from '../dtos/unidadeUnasp.dto';
 import { FindAllLimitedUnidadesUnaspQuery } from '../query/findAllLimited.unidadesUnasp.query';
 import { FindPaginationUnidadesUnaspQuery } from '../query/findPagination.unidadesUnasp.query';
 import { CreateUnidadeUnaspService } from '../services/createUnidadeUnasp.service';
@@ -51,12 +50,12 @@ export class UnidadesUnaspController {
   }
 
   @Post()
-  async createUnidadeUnasp(@Body() input: CreateUnidadeUnaspDto) {
+  async createUnidadeUnasp(@Body() input: UnidadeUnaspDto) {
     return await this.createUnidadeUnaspService.execute(input);
   }
 
   @Put(':id')
-  async updateUnidadeUnasp(@Param() { id }: IParamId, @Body() input: UpdateUnidadeUnaspDto) {
+  async updateUnidadeUnasp(@Param() { id }: IParamId, @Body() input: UnidadeUnaspDto) {
     return await this.updateUnidadeUnaspService.execute({ id, ...input });
   }
 

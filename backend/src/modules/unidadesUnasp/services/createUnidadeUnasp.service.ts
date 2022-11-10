@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateUnidadeUnaspDto } from '../dtos/createUnidadeUnasp.dto';
+import { UnidadeUnaspDto } from '../dtos/unidadeUnasp.dto';
 import { UnidadesUnaspRepository } from '../repositories/unidadesUnasp.repository';
 import { CommonUnidadeUnaspService } from './commonUnidadeUnasp.service';
 
@@ -11,7 +11,7 @@ export class CreateUnidadeUnaspService {
     private readonly commonUnidadeUnaspService: CommonUnidadeUnaspService,
   ) {}
 
-  async execute({ nome, contatoAssesoria }: CreateUnidadeUnaspDto) {
+  async execute({ nome, contatoAssesoria }: UnidadeUnaspDto) {
     await this.commonUnidadeUnaspService.validateNome(nome);
 
     const unidadeUnasp = await this.unidadesUnaspRepository.create({
