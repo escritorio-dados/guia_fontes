@@ -4,7 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+
+import { Vinculo } from '@modules/vinculos/entities/Vinculo';
 
 @Entity('unidades_unasp')
 export class UnidadeUnasp {
@@ -22,4 +25,7 @@ export class UnidadeUnasp {
 
   @UpdateDateColumn({ type: 'timestamp with time zone' })
   updated_at: Date;
+
+  @OneToMany(() => Vinculo, (areaAtuacao) => areaAtuacao.unidadeUnasp)
+  vinculos: Vinculo[];
 }
