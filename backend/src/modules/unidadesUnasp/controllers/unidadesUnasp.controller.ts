@@ -1,16 +1,4 @@
-import {
-  Body,
-  ClassSerializerInterceptor,
-  Controller,
-  Delete,
-  Get,
-  HttpCode,
-  Param,
-  Post,
-  Put,
-  Query,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query } from '@nestjs/common';
 
 import { IParamId } from '@shared/types/params';
 
@@ -23,7 +11,6 @@ import { FindAllUnidadeUnaspService } from '../services/findAllUnidadeUnasp.serv
 import { FindOneUnidadeUnaspService } from '../services/findOneUnidadeUnasp.service';
 import { UpdateUnidadeUnaspService } from '../services/updateUnidadeUnasp.service';
 
-@UseInterceptors(ClassSerializerInterceptor)
 @Controller('unidades_unasp')
 export class UnidadesUnaspController {
   constructor(

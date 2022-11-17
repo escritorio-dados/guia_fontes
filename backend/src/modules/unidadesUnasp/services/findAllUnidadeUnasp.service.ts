@@ -78,4 +78,8 @@ export class FindAllUnidadeUnaspService {
 
     return apiData;
   }
+
+  async findAllbyId(ids: string[]) {
+    return await this.unidadesUnaspRepository.findByIds(ids);
+  }
 }

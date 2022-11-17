@@ -77,4 +77,8 @@ export class FindAllPeriodoService {
 
     return apiData;
   }
+
+  async findAllbyId(ids: string[]) {
+    return await this.periodosRepository.findByIds(ids);
+  }
 }

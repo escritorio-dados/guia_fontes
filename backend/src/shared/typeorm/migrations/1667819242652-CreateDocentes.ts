@@ -18,11 +18,11 @@ export class CreateDocentes1667819242652 implements MigrationInterface {
           {
             name: 'nome',
             type: 'varchar',
-            isUnique: true,
           },
           {
             name: 'lattes_id',
             type: 'varchar',
+            isUnique: true,
           },
           {
             name: 'resumo_lattes',

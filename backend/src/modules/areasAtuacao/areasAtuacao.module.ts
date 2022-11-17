@@ -2,8 +2,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AreaAtuacao } from './entities/AreaAtuacao';
+import { AreasAtuacaoRepository } from './repositories/areasAtuacao.repository';
+import { CreateAreaAtuacaoService } from './services/createAreaAtuacao.service';
 
-const services = [];
+const services = [CreateAreaAtuacaoService, AreasAtuacaoRepository];
 
 @Module({
   imports: [TypeOrmModule.forFeature([AreaAtuacao])],

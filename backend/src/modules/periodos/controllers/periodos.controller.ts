@@ -1,16 +1,4 @@
-import {
-  Body,
-  ClassSerializerInterceptor,
-  Controller,
-  Delete,
-  Get,
-  HttpCode,
-  Param,
-  Post,
-  Put,
-  Query,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query } from '@nestjs/common';
 
 import { IParamId } from '@shared/types/params';
 
@@ -23,7 +11,6 @@ import { FindAllPeriodoService } from '../services/findAllPeriodo.service';
 import { FindOnePeriodoService } from '../services/findOnePeriodo.service';
 import { UpdatePeriodoService } from '../services/updatePeriodo.service';
 
-@UseInterceptors(ClassSerializerInterceptor)
 @Controller('periodos')
 export class PeriodosController {
   constructor(

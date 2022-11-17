@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager, In, Repository } from 'typeorm';
 
 import {
   IFindLimited,
@@ -57,6 +57,10 @@ export class PeriodosRepository {
     });
 
     return await query.getMany();
+  }
+
+  async findByIds(ids: string[], relations?: string[]) {
+    return await this.repository.find({ relations, where: { id: In(ids) } });
   }
 
   async findById(id: string, relations?: string[]) {
