@@ -1,6 +1,7 @@
 import { FileUpload } from '@mui/icons-material';
 import { Box } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { CustomIconButton } from '#shared/components/CustomIconButton';
 import { CustomTable, ICol } from '#shared/components/CustomTable';
@@ -46,6 +47,7 @@ export const stateKeyDocentes = 'docentes';
 
 export function ListDocente() {
   const keepState = useKeepStates();
+  const navigate = useNavigate();
 
   const [apiConfig, setApiConfig] = useState<IPaginationConfig<IDocenteFilters>>(() =>
     getApiConfig({
@@ -115,7 +117,7 @@ export function ListDocente() {
                 iconType="info"
                 iconSize="small"
                 title="Ir para a página de detalhes"
-                action={() => console.log()}
+                action={() => navigate(`/admin/docentes/${id}`)}
               />
 
               <CustomIconButton
@@ -159,16 +161,7 @@ export function ListDocente() {
           updateList={(id) => updateDocentesData((current) => handleDeleteItem({ id, current }))}
         />
       )}
-
-
-
-      {infoDocente != null && (
-        <InfoDocenteModal
-          openModal={infoDocente != null}
-          closeModal={() => setInfoDocente(null)}
-          docente_id={infoDocente.id}
-        />
-      )} */}
+       */}
 
       {updateDocente != null && (
         <UpdateXmlDocenteModal
