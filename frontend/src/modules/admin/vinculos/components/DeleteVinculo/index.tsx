@@ -6,26 +6,26 @@ import { CustomDialog } from '#shared/components/CustomDialog';
 import { useToast } from '#shared/hooks/toast';
 import { useDelete } from '#shared/services/useAxios';
 import { TextConfirm } from '#shared/styledComponents/common';
-import { IDeleteModal } from '#shared/types/IModal';
+import { IReloadModal } from '#shared/types/IModal';
 
-type IDeletePeriodoModal = IDeleteModal & { periodo: { id: string; nome: string } };
+type IDeleteVinculoModal = IReloadModal & { vinculo: { id: string; nome: string } };
 
-export function DeletePeriodoModal({
+export function DeleteVinculoModal({
   closeModal,
-  periodo,
+  vinculo,
   openModal,
-  updateList,
-}: IDeletePeriodoModal) {
+  reloadList,
+}: IDeleteVinculoModal) {
   const { toast } = useToast();
 
-  const { send: deletePeriodo } = useDelete(`/periodos/${periodo.id}`);
+  const { send: deleteVinculo } = useDelete(`/vinculos/${vinculo.id}`);
 
   const handleDelete = useCallback(async () => {
-    if (periodo == null) {
+    if (vinculo == null) {
       return;
     }
 
-    const { error } = await deletePeriodo();
+    const { error } = await deleteVinculo();
 
     if (error != null) {
       toast({ message: error, severity: 'error' });
@@ -33,19 +33,19 @@ export function DeletePeriodoModal({
       return;
     }
 
-    updateList(periodo.id);
+    reloadList();
 
-    toast({ message: 'periodo deletado', severity: 'success' });
+    toast({ message: 'vinculo deletado', severity: 'success' });
 
     closeModal();
-  }, [closeModal, deletePeriodo, updateList, toast, periodo]);
+  }, [closeModal, deleteVinculo, reloadList, toast, vinculo]);
 
   return (
     <>
-      <CustomDialog open={openModal} closeModal={closeModal} title="Excluir Periodo" maxWidth="xs">
-        <Typography>Tem Certeza que deseja deletar o periodo:</Typography>
+      <CustomDialog open={openModal} closeModal={closeModal} title="Excluir Vinculo" maxWidth="sm">
+        <Typography>Tem Certeza que deseja deletar o vinculo:</Typography>
 
-        <TextConfirm>{periodo.nome}</TextConfirm>
+        <TextConfirm>{vinculo.nome}</TextConfirm>
 
         <CustomButton color="error" onClick={handleDelete}>
           Sim

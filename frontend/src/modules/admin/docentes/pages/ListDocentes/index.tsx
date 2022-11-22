@@ -16,6 +16,7 @@ import { getSortOptions, IPaginationConfig } from '#shared/utils/pagination';
 import { removeEmptyFields } from '#shared/utils/removeEmptyFields';
 
 import { CreateDocenteModal } from '../../components/CreateDocente';
+import { DeleteDocenteModal } from '../../components/DeleteDocente';
 import { UpdateXmlDocenteModal } from '../../components/UpdateXmlDocente';
 import { IDocente, IDocenteFilters } from '../../types/IDocente';
 import { defaultDocenteFilter, ListDocentesFilter } from './form';
@@ -138,7 +139,7 @@ export function ListDocente() {
         },
       },
     ];
-  }, []);
+  }, [navigate]);
 
   const docentesInfo = useMemo(() => {
     if (docentesData == null) {
@@ -153,15 +154,14 @@ export function ListDocente() {
 
   return (
     <>
-      {/* {deleteDocente != null && (
+      {deleteDocente != null && (
         <DeleteDocenteModal
           openModal={deleteDocente != null}
           closeModal={() => setDeleteDocente(null)}
           docente={deleteDocente}
-          updateList={(id) => updateDocentesData((current) => handleDeleteItem({ id, current }))}
+          reloadList={async () => await getDocentes({ params: apiParams })}
         />
       )}
-       */}
 
       {updateDocente != null && (
         <UpdateXmlDocenteModal

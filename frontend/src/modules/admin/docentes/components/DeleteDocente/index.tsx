@@ -6,26 +6,26 @@ import { CustomDialog } from '#shared/components/CustomDialog';
 import { useToast } from '#shared/hooks/toast';
 import { useDelete } from '#shared/services/useAxios';
 import { TextConfirm } from '#shared/styledComponents/common';
-import { IDeleteModal } from '#shared/types/IModal';
+import { IReloadModal } from '#shared/types/IModal';
 
-type IDeletePeriodoModal = IDeleteModal & { periodo: { id: string; nome: string } };
+type IDeleteDocenteModal = IReloadModal & { docente: { id: string; nome: string } };
 
-export function DeletePeriodoModal({
+export function DeleteDocenteModal({
   closeModal,
-  periodo,
+  docente,
   openModal,
-  updateList,
-}: IDeletePeriodoModal) {
+  reloadList,
+}: IDeleteDocenteModal) {
   const { toast } = useToast();
 
-  const { send: deletePeriodo } = useDelete(`/periodos/${periodo.id}`);
+  const { send: deleteDocente } = useDelete(`/docentes/${docente.id}`);
 
   const handleDelete = useCallback(async () => {
-    if (periodo == null) {
+    if (docente == null) {
       return;
     }
 
-    const { error } = await deletePeriodo();
+    const { error } = await deleteDocente();
 
     if (error != null) {
       toast({ message: error, severity: 'error' });
@@ -33,19 +33,19 @@ export function DeletePeriodoModal({
       return;
     }
 
-    updateList(periodo.id);
+    reloadList();
 
-    toast({ message: 'periodo deletado', severity: 'success' });
+    toast({ message: 'docente deletado', severity: 'success' });
 
     closeModal();
-  }, [closeModal, deletePeriodo, updateList, toast, periodo]);
+  }, [closeModal, deleteDocente, reloadList, toast, docente]);
 
   return (
     <>
-      <CustomDialog open={openModal} closeModal={closeModal} title="Excluir Periodo" maxWidth="xs">
-        <Typography>Tem Certeza que deseja deletar o periodo:</Typography>
+      <CustomDialog open={openModal} closeModal={closeModal} title="Excluir Docente" maxWidth="sm">
+        <Typography>Tem Certeza que deseja deletar o docente:</Typography>
 
-        <TextConfirm>{periodo.nome}</TextConfirm>
+        <TextConfirm>{docente.nome}</TextConfirm>
 
         <CustomButton color="error" onClick={handleDelete}>
           Sim

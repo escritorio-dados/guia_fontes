@@ -6,6 +6,14 @@ import { CommonDocenteService } from './commonDocente.service';
 export class FindOneDocenteService {
   constructor(private readonly commonDocenteService: CommonDocenteService) {}
 
+  async getDocente(id: string) {
+    const docente = await this.commonDocenteService.getDocente({
+      id,
+    });
+
+    return docente;
+  }
+
   async getInfo(id: string) {
     const docente = await this.commonDocenteService.getDocente({
       id,

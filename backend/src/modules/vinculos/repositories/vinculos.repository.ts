@@ -14,6 +14,12 @@ export interface ICreateVinculo {
   periodo: Periodo;
 }
 
+interface IFindDuplicate {
+  docente_id: string;
+  periodo_id: string;
+  unidade_id: string;
+}
+
 @Injectable()
 export class VinculosRepository {
   constructor(
@@ -23,6 +29,20 @@ export class VinculosRepository {
 
   async findById(id: string, relations?: string[]) {
     return await this.repository.findOne({ relations, where: { id } });
+  }
+
+  async findDuplicate(where: IFindDuplicate) {
+    return await this.repository.findOne({ where });
+  }
+
+  async create(vinculo: ICreateVinculo, manager?: EntityManager) {
+    const repo = manager != null ? manager.getRepository(Vinculo) : this.repository;
+
+    const newVinculo = repo.create(vinculo);
+
+    await repo.save(newVinculo);
+
+    return newVinculo;
   }
 
   async createMany(vinculo: ICreateVinculo[], manager?: EntityManager) {

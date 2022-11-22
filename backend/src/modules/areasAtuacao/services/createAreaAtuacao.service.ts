@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { EntityManager } from 'typeorm';
 
 import { Docente } from '@modules/docentes/entities/Docente';
+import { FindOneDocenteService } from '@modules/docentes/services/findOneDocente.service';
 
+import { CreateAreaAtuacaoDto } from '../dtos/createAreaAtuacao.dto';
 import { AreasAtuacaoRepository } from '../repositories/areasAtuacao.repository';
 import { getAreaAtuacaoUniqueKey } from '../utils/getUniqueKeyAreaAtuacao';
 
@@ -16,7 +18,28 @@ export interface ICreateAreaAtuacaoXml {
 
 @Injectable()
 export class CreateAreaAtuacaoService {
-  constructor(private readonly areasAtuacaoRepository: AreasAtuacaoRepository) {}
+  constructor(
+    private readonly areasAtuacaoRepository: AreasAtuacaoRepository,
+    private readonly findOneDocenteService: FindOneDocenteService,
+  ) {}
+
+  async execute({
+    areaConhecimento,
+    docente_id,
+    especialidade,
+    grandeArea,
+    subArea,
+  }: CreateAreaAtuacaoDto) {
+    const docente = await this.findOneDocenteService.getDocente(docente_id);
+
+    return await this.areasAtuacaoRepository.create({
+      areaConhecimento,
+      docente,
+      especialidade,
+      grandeArea,
+      subArea,
+    });
+  }
 
   async createManyFromXml(areas: ICreateAreaAtuacaoXml[], manager: EntityManager) {
     const objectAreas = Object.fromEntries(

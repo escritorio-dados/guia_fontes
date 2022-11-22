@@ -39,3 +39,12 @@ export interface IDocenteFiltersAPI {
   min_updated: Date | null;
   max_updated: Date | null;
 }
+
+export interface IUpdateDocenteInput {
+  nome: string;
+  cpf?: string;
+  contatoAssesoria?: string;
+  lattesId?: string;
+  resumoLattes?: string;
+  imprensa?: boolean;
+}

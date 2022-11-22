@@ -29,6 +29,16 @@ export class AreasAtuacaoRepository {
     return await this.repository.findOne({ relations, where: { id } });
   }
 
+  async create(areaAtuacao: ICreateAreaAtuacao, manager?: EntityManager) {
+    const repo = manager != null ? manager.getRepository(AreaAtuacao) : this.repository;
+
+    const newAreaAtuacao = repo.create(areaAtuacao);
+
+    await repo.save(newAreaAtuacao);
+
+    return newAreaAtuacao;
+  }
+
   async createMany(areaAtuacao: ICreateAreaAtuacao[], manager?: EntityManager) {
     const repo = manager != null ? manager.getRepository(AreaAtuacao) : this.repository;
 

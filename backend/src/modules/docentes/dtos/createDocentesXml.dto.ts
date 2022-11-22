@@ -17,12 +17,14 @@ export class CreateDocentesXmlDto {
   @IsNotEmpty()
   contato_assesoria: string;
 
+  @IsOptional()
   @IsBoolean()
   @Transform(transformBooleanApi)
   imprensa = false;
 
+  @IsOptional()
   @Type(() => VinculoXmlDto)
   @IsArray()
   @ValidateNested({ each: true })
-  vinculos: VinculoXmlDto[];
+  vinculos: VinculoXmlDto[] = [];
 }

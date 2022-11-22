@@ -12,6 +12,7 @@ import {
 } from '@modules/areasAtuacao/services/createAreaAtuacao.service';
 import { DeleteAreaAtuacaoService } from '@modules/areasAtuacao/services/deleteAreaAtuacao.service';
 
+import { UpdateDocenteDto } from '../dtos/updateDocente.dto';
 import { docenteErrors } from '../errors/docente.errors';
 import { DocentesRepository } from '../repositories/docentes.repository';
 import { IDocenteXml } from '../types/xml';
@@ -21,6 +22,8 @@ interface IUpdateXmlDocente {
   id: string;
   xml: Express.Multer.File;
 }
+
+type IUpdateDocente = UpdateDocenteDto & { id: string };
 
 @Injectable()
 export class UpdateDocenteService {
@@ -33,6 +36,21 @@ export class UpdateDocenteService {
 
     @InjectDataSource() private readonly dataSource: DataSource,
   ) {}
+
+  async updateDocente({ id, ...input }: IUpdateDocente) {
+    const docente = await this.commonDocenteService.getDocente({ id });
+
+    docente.contatoAssesoria = input.contatoAssesoria;
+    docente.cpf = input.cpf;
+    docente.imprensa = input.imprensa;
+    docente.lattesId = input.lattesId;
+    docente.resumoLattes = input.resumoLattes;
+    docente.nome = input.nome;
+
+    const docenteUpdated = await this.docentesRepository.save(docente);
+
+    return docenteUpdated;
+  }
 
   async updateXml({ id, xml }: IUpdateXmlDocente) {
     // Coletando As informações do Lattes
