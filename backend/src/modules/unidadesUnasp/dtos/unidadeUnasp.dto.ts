@@ -1,10 +1,6 @@
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 
 export class UnidadeUnaspDto {
   @IsNotEmpty()
   nome: string;
-
-  @IsOptional()
-  @IsNotEmpty()
-  contatoAssesoria?: string;
 }

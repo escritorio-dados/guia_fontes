@@ -8,6 +8,7 @@ import { FormTextField } from '#shared/components/form/FormTextField';
 import { useToast } from '#shared/hooks/toast';
 import { usePost } from '#shared/services/useAxios';
 import { IAddModal } from '#shared/types/IModal';
+import { removeEmptyFields } from '#shared/utils/removeEmptyFields';
 
 import { IUnidadeUnaspSchema, unidadeUnaspSchema } from '../../schemas/unidadeUnasp.schema';
 import { IUnidadeUnaspInput, IUnidadeUnasp } from '../../types/IUnidadeUnasp';
@@ -33,7 +34,9 @@ export function CreateUnidadeUnaspModal({
 
   const onSubmit = useCallback(
     async (input: IUnidadeUnaspSchema) => {
-      const { error: createError, data: newUnidadeUnasp } = await createUnidadeUnasp(input);
+      const { error: createError, data: newUnidadeUnasp } = await createUnidadeUnasp(
+        removeEmptyFields(input),
+      );
 
       if (createError != null) {
         toast({ message: createError, severity: 'error' });
@@ -64,13 +67,6 @@ export function CreateUnidadeUnaspModal({
             control={control}
             errors={errors.nome}
             marginType="no-margin"
-          />
-
-          <FormTextField
-            name="contatoAssesoria"
-            label="Contato Assesoria"
-            control={control}
-            errors={errors.contatoAssesoria}
           />
 
           <CustomButton type="submit">Cadastrar</CustomButton>

@@ -20,9 +20,19 @@ export class CreateDocentes1667819242652 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'cpf',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'contato_assesoria',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'lattes_id',
             type: 'varchar',
-            isUnique: true,
+            isNullable: true,
           },
           {
             name: 'resumo_lattes',

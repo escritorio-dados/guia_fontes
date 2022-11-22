@@ -85,6 +85,7 @@
     "import/no-duplicates": "off",
     "react/prop-types": "off",
     "no-console": "warn",
+    "@typescript-eslint/no-dynamic-delete": "off",
     "@typescript-eslint/no-misused-promises": [
       "error",
       {

@@ -26,11 +26,6 @@ export class VinculosUnaspDocente1667821572546 implements MigrationInterface {
             type: 'uuid',
           },
           {
-            name: 'dominante',
-            type: 'boolean',
-            default: 'false',
-          },
-          {
             name: 'created_at',
             type: 'timestamp with time zone',
             default: 'now()',

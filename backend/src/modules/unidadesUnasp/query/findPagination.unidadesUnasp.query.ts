@@ -5,7 +5,7 @@ import { transformDatesApi } from '@shared/utils/transformApi';
 
 import { UnidadeUnasp } from '../entities/UnidadeUnasp';
 
-const sortFields = ['nome', 'id', 'contatoAssesoria', 'updated_at', 'created_at'];
+const sortFields = ['nome', 'id', 'updated_at', 'created_at'];
 
 export class FindPaginationUnidadesUnaspQuery {
   @IsInt()
@@ -25,10 +25,6 @@ export class FindPaginationUnidadesUnaspQuery {
   @IsNotEmpty()
   @IsOptional()
   nome?: string;
-
-  @IsNotEmpty()
-  @IsOptional()
-  contatoAssesoria?: string;
 
   @IsDate()
   @IsOptional()

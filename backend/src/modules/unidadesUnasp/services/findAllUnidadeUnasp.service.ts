@@ -38,12 +38,6 @@ export class FindAllUnidadeUnaspService {
         alias: ['unidadeUnasp.'],
       },
       {
-        field: 'contatoAssesoria',
-        values: [query.contatoAssesoria],
-        operation: 'like',
-        alias: ['unidadeUnasp.'],
-      },
-      {
         field: 'updated_at',
         ...configRangeFilterAlias({ minValue: query.min_updated, maxValue: query.max_updated }),
         alias: ['unidadeUnasp.'],
@@ -53,7 +47,6 @@ export class FindAllUnidadeUnaspService {
     const sortConfig: ISortConfig = {
       id: { field: 'id', alias: ['unidadeUnasp.'] },
       nome: { field: 'nome', alias: ['unidadeUnasp.'] },
-      contatoAssesoria: { field: 'contatoAssesoria', alias: ['unidadeUnasp.'] },
       updated_at: { field: 'updated_at', alias: ['unidadeUnasp.'] },
       created_at: { field: 'created_at', alias: ['unidadeUnasp.'] },
     };

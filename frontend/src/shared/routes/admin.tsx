@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
+import { DocentesRoutes } from '#modules/admin/docentes/routes';
 import { PeriodosRoutes } from '#modules/admin/periodos/routes';
 import { HomeAdmin } from '#modules/admin/shared/pages/HomeAdmin';
 import { UnidadesUnaspRoutes } from '#modules/admin/unidadesUnasp/routes';
@@ -42,6 +43,15 @@ export function AdminRoutes() {
         element={
           <PrivateRoute>
             <PeriodosRoutes />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/docentes/*"
+        element={
+          <PrivateRoute>
+            <DocentesRoutes />
           </PrivateRoute>
         }
       />

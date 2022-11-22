@@ -19,11 +19,6 @@ export class CreateUnidadesUnasp1667821028881 implements MigrationInterface {
             isUnique: true,
           },
           {
-            name: 'contato_assesoria',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
             name: 'created_at',
             type: 'timestamp with time zone',
             default: 'now()',

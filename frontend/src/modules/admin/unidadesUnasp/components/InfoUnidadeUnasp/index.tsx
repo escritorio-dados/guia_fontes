@@ -53,8 +53,6 @@ export function InfoUnidadeUnaspModal({
         >
           <LabelValue label="Nome:" value={unidadeUnaspInfo.nome} />
 
-          <LabelValue label="Contato Assesoria:" value={unidadeUnaspInfo.contatoAssesoria} />
-
           <LabelValue label="Criado em:" value={unidadeUnaspInfo.created_at} />
 
           <LabelValue label="Atualizado em:" value={unidadeUnaspInfo.updated_at} />

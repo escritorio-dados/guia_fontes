@@ -16,16 +16,14 @@ import { AppBarStyled, ToolbarStyled, MenuHeader, MenuOptions } from './styles';
 export function AdminAppBar() {
   const navigate = useNavigate();
   const { logged, signOut, user } = useAuth();
-  const { openNavBar, togleNavBar, closeNavBar } = useNavBar();
+  const { openNavBar, togleNavBar } = useNavBar();
   const { title } = useTitle();
 
   const handleSignOut = useCallback(async () => {
     await signOut();
 
-    closeNavBar();
-
     navigate('/auth');
-  }, [navigate, closeNavBar, signOut]);
+  }, [navigate, signOut]);
 
   return (
     <AppBarStyled position="absolute">

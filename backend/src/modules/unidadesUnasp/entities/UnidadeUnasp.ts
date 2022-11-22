@@ -17,9 +17,6 @@ export class UnidadeUnasp {
   @Column()
   nome: string;
 
-  @Column({ name: 'contato_assesoria' })
-  contatoAssesoria?: string;
-
   @CreateDateColumn({ type: 'timestamp with time zone' })
   created_at: Date;
 

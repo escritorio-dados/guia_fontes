@@ -38,7 +38,6 @@ export const defaultApiConfigUnidadeUnasps: IPaginationConfig<IUnidadeUnaspFilte
 
 const sortTranslator: Record<string, string> = {
   nome: 'Nome',
-  contatoAssesoria: 'Contato Assesoria',
   updated_at: 'Data de Atualização',
   created_at: 'Data de Criação',
 };
@@ -105,7 +104,6 @@ export function ListUnidadeUnasp() {
   const cols = useMemo<Array<ICol<IUnidadeUnasp>>>(() => {
     return [
       { key: 'nome', header: 'Nome', minWidth: '200px' },
-      { key: 'contatoAssesoria', header: 'Contato Assesoria', minWidth: '200px' },
       {
         header: 'Opções',
         maxWidth: '150px',

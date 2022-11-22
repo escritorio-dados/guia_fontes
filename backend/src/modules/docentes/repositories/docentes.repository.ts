@@ -10,7 +10,9 @@ import { Docente } from '../entities/Docente';
 
 interface ICreateDocente {
   nome: string;
-  lattesId: string;
+  cpf?: string;
+  contatoAssesoria?: string;
+  lattesId?: string;
   resumoLattes?: string;
   imprensa: boolean;
 }
@@ -28,8 +30,10 @@ export class DocentesRepository {
       .select([
         'docente.id',
         'docente.nome',
+        'docente.cpf',
         'docente.lattesId',
         'docente.imprensa',
+        'docente.contatoAssesoria',
         'areasAtuacao.areaConhecimento',
         'vinculos.id',
         'docente.updated_at',
@@ -72,7 +76,9 @@ export class DocentesRepository {
     await this.repository.remove(docente);
   }
 
-  async save(docente: Docente) {
-    return await this.repository.save(docente);
+  async save(docente: Docente, manager?: EntityManager) {
+    const repo = manager != null ? manager.getRepository(Docente) : this.repository;
+
+    return await repo.save(docente);
   }
 }

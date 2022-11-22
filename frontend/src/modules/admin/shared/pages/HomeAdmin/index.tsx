@@ -1,5 +1,12 @@
-import { Typography } from '@mui/material';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function HomeAdmin() {
-  return <Typography>Bem Vindo</Typography>;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/admin/docentes');
+  }, [navigate]);
+
+  return <></>;
 }

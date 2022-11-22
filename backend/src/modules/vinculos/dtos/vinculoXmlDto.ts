@@ -1,7 +1,4 @@
-import { Transform } from 'class-transformer';
-import { IsBoolean, IsUUID } from 'class-validator';
-
-import { transformBooleanApi } from '@shared/utils/transformApi';
+import { IsUUID } from 'class-validator';
 
 export class VinculoXmlDto {
   @IsUUID()
@@ -9,8 +6,4 @@ export class VinculoXmlDto {
 
   @IsUUID()
   periodo_id: string;
-
-  @IsBoolean()
-  @Transform(transformBooleanApi)
-  dominante: boolean;
 }

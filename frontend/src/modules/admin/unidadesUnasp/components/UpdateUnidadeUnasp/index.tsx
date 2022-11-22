@@ -84,14 +84,6 @@ export function UpdateUnidadeUnaspModal({
               marginType="no-margin"
             />
 
-            <FormTextField
-              name="contatoAssesoria"
-              label="Contato Assesoria"
-              control={control}
-              errors={errors.contatoAssesoria}
-              defaultValue={unidadeUnaspData.contatoAssesoria}
-            />
-
             <CustomButton type="submit">Salvar Alterações</CustomButton>
           </form>
         </CustomDialog>

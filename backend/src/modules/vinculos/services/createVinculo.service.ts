@@ -14,7 +14,6 @@ import { ICreateVinculo, VinculosRepository } from '../repositories/vinculos.rep
 import { getVinculoUniqueKey } from '../utils/getUniqueKeyVinculo';
 
 export interface ICreateVinculoXml {
-  dominante: boolean;
   unidade_id: string;
   periodo_id: string;
   docente: Docente;

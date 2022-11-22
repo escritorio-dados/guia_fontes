@@ -22,6 +22,24 @@ export class FindAllDocenteService {
         alias: ['docente.'],
       },
       {
+        field: 'lattesId',
+        values: [query.lattes_id],
+        operation: 'like',
+        alias: ['docente.'],
+      },
+      {
+        field: 'cpf',
+        values: [query.cpf],
+        operation: 'like',
+        alias: ['docente.'],
+      },
+      {
+        field: 'contatoAssesoria',
+        values: [query.contato_assesoria],
+        operation: 'like',
+        alias: ['docente.'],
+      },
+      {
         field: 'area',
         values: [query.imprensa === true ? 'true' : undefined],
         operation: 'equal',
@@ -59,6 +77,8 @@ export class FindAllDocenteService {
       lattes_id: { field: 'lattesId', alias: ['docente.'] },
       updated_at: { field: 'updated_at', alias: ['docente.'] },
       created_at: { field: 'created_at', alias: ['docente.'] },
+      contato_assesoria: { field: 'contatoAssesoria', alias: ['docente.'] },
+      cpf: { field: 'cpf', alias: ['docente.'] },
     };
 
     const sort = sortConfig[query.sort_by];

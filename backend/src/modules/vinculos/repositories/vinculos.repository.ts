@@ -9,7 +9,6 @@ import { UnidadeUnasp } from '@modules/unidadesUnasp/entities/UnidadeUnasp';
 import { Vinculo } from '../entities/Vinculo';
 
 export interface ICreateVinculo {
-  dominante: boolean;
   unidadeUnasp: UnidadeUnasp;
   docente: Docente;
   periodo: Periodo;

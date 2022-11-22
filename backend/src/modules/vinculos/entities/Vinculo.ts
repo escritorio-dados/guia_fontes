@@ -17,9 +17,6 @@ export class Vinculo {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('boolean')
-  dominante: boolean;
-
   @Column('uuid')
   unidade_id: string;
 

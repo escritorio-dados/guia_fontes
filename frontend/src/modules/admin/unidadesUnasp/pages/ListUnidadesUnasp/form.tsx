@@ -9,7 +9,6 @@ import { IUnidadeUnaspFilters } from '../../types/IUnidadeUnasp';
 
 export const defaultUnidadeUnaspFilter: IUnidadeUnaspFilters = {
   nome: '',
-  contatoAssesoria: '',
   min_updated: null,
   max_updated: null,
 };
@@ -41,17 +40,6 @@ export function ListUnidadeUnaspsFilter({
             marginType="no-margin"
             defaultValue={apiConfig.filters.nome}
             errors={errors.nome}
-          />
-        </Grid>
-
-        <Grid item lg={4} sm={6} xs={12}>
-          <FormTextField
-            control={control}
-            name="contatoAssesoria"
-            label="Contato Assesoria"
-            marginType="no-margin"
-            defaultValue={apiConfig.filters.contatoAssesoria}
-            errors={errors.contatoAssesoria}
           />
         </Grid>
 

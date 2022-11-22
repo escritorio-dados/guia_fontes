@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 type ICButtonProps = ButtonProps & {
   marginType?: 'no-margin' | 'left-margin';
   customColor?: string;
+  component?: string;
 };
 
 export function CustomButton({

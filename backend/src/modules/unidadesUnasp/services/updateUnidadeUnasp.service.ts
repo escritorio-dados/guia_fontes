@@ -13,7 +13,7 @@ export class UpdateUnidadeUnaspService {
     private readonly commonUnidadeUnaspService: CommonUnidadeUnaspService,
   ) {}
 
-  async execute({ id, nome, contatoAssesoria }: IUpdateUnidadeUnasp) {
+  async execute({ id, nome }: IUpdateUnidadeUnasp) {
     const unidadeUnasp = await this.commonUnidadeUnaspService.getUnidadeUnasp({
       id,
     });
@@ -23,7 +23,6 @@ export class UpdateUnidadeUnaspService {
     }
 
     unidadeUnasp.nome = nome;
-    unidadeUnasp.contatoAssesoria = contatoAssesoria;
 
     await this.unidadesUnaspRepository.save(unidadeUnasp);
 

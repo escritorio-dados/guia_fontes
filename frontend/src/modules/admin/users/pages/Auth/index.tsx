@@ -33,7 +33,7 @@ export function Auth() {
       if (state?.returnThisPage != null) {
         navigate(-1);
       } else {
-        navigate('/admin');
+        navigate('/admin/docentes');
       }
     }
 

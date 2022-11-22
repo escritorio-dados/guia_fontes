@@ -1,5 +1,5 @@
 import { Transform, Type } from 'class-transformer';
-import { IsArray, IsBoolean, IsNotEmpty, ValidateNested } from 'class-validator';
+import { IsArray, IsBoolean, IsNotEmpty, IsOptional, ValidateNested } from 'class-validator';
 
 import { transformBooleanApi } from '@shared/utils/transformApi';
 
@@ -9,12 +9,17 @@ export class CreateDocentesXmlDto {
   @IsNotEmpty()
   nome: string;
 
+  @IsOptional()
   @IsNotEmpty()
-  lattes_id: string;
+  cpf: string;
+
+  @IsOptional()
+  @IsNotEmpty()
+  contato_assesoria: string;
 
   @IsBoolean()
   @Transform(transformBooleanApi)
-  imprensa: boolean;
+  imprensa = false;
 
   @Type(() => VinculoXmlDto)
   @IsArray()

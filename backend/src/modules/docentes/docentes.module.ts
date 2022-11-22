@@ -11,6 +11,7 @@ import { CommonDocenteService } from './services/commonDocente.service';
 import { CreateDocenteService } from './services/createDocente.service';
 import { FindAllDocenteService } from './services/findAllDocente.service';
 import { FindOneDocenteService } from './services/findOneDocente.service';
+import { UpdateDocenteService } from './services/updateDocente.service';
 
 const services = [
   CreateDocenteService,
@@ -18,6 +19,7 @@ const services = [
   DocentesRepository,
   FindAllDocenteService,
   FindOneDocenteService,
+  UpdateDocenteService,
 ];
 
 @Module({

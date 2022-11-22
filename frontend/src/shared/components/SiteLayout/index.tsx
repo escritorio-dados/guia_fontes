@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 import { useNavBar } from '#shared/hooks/navBar';
 import { Router } from '#shared/routes';
@@ -11,6 +12,7 @@ import { MainContent, SiteContainer } from './styles';
 
 export function SiteLayout() {
   const { openNavBar } = useNavBar();
+  const location = useLocation();
 
   if (location.pathname.includes('/admin'))
     return (

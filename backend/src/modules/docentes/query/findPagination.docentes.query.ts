@@ -14,7 +14,16 @@ import { transformBooleanApi, transformDatesApi } from '@shared/utils/transformA
 
 import { Docente } from '../entities/Docente';
 
-const sortFields = ['nome', 'id', 'updated_at', 'created_at', 'imprensa', 'lattes_id'];
+const sortFields = [
+  'nome',
+  'id',
+  'updated_at',
+  'created_at',
+  'imprensa',
+  'lattes_id',
+  'contato_assesoria',
+  'cpf',
+];
 
 export class FindPaginationDocentesQuery {
   @IsInt()
@@ -34,6 +43,18 @@ export class FindPaginationDocentesQuery {
   @IsNotEmpty()
   @IsOptional()
   nome?: string;
+
+  @IsNotEmpty()
+  @IsOptional()
+  cpf?: string;
+
+  @IsNotEmpty()
+  @IsOptional()
+  contato_assesoria?: string;
+
+  @IsNotEmpty()
+  @IsOptional()
+  lattes_id?: string;
 
   @IsNotEmpty()
   @IsOptional()

@@ -21,6 +21,10 @@ export class AreasAtuacaoRepository {
     private readonly repository: Repository<AreaAtuacao>,
   ) {}
 
+  async findAllByDocente(docente_id: string) {
+    return await this.repository.find({ where: { docente_id } });
+  }
+
   async findById(id: string, relations?: string[]) {
     return await this.repository.findOne({ relations, where: { id } });
   }
@@ -37,6 +41,10 @@ export class AreasAtuacaoRepository {
 
   async delete(areaAtuacao: AreaAtuacao) {
     await this.repository.remove(areaAtuacao);
+  }
+
+  async deleteMany(areasAtuacao: AreaAtuacao[]) {
+    await this.repository.remove(areasAtuacao);
   }
 
   async save(areaAtuacao: AreaAtuacao) {

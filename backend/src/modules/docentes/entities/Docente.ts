@@ -18,8 +18,14 @@ export class Docente {
   @Column()
   nome: string;
 
+  @Column()
+  cpf?: string;
+
+  @Column({ name: 'contato_assesoria' })
+  contatoAssesoria?: string;
+
   @Column({ name: 'lattes_id' })
-  lattesId: string;
+  lattesId?: string;
 
   @Column({ name: 'resumo_lattes' })
   resumoLattes?: string;

@@ -15,7 +15,6 @@ import { UnidadeUnasp } from '../entities/UnidadeUnasp';
 
 interface ICreateUnidadeUnasp {
   nome: string;
-  contatoAssesoria?: string;
 }
 
 @Injectable()
@@ -28,7 +27,7 @@ export class UnidadesUnaspRepository {
   async findPagination({ sortBy, orderBy, page, filters, customFilters }: IFindPagination) {
     const query = this.repository
       .createQueryBuilder('unidadeUnasp')
-      .select(['unidadeUnasp.id', 'unidadeUnasp.nome', 'unidadeUnasp.contatoAssesoria'])
+      .select(['unidadeUnasp.id', 'unidadeUnasp.nome'])
       .take(paginationSizeLarge)
       .skip((page - 1) * paginationSizeLarge);
 
