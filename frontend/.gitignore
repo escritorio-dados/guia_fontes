@@ -24,3 +24,10 @@ yarn-error.log*
 
 
 .env
+
+# Ngix
+/nginx/dhparam/*
+!/nginx/dhparam/.gitkeep
+
+/nginx/templates/*
+!/nginx/templates/.gitkeep

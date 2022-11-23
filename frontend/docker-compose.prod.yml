@@ -1,0 +1,64 @@
+version: "3"
+
+services:
+  app_guia_fontes:
+    build:
+      context: .
+    image: escritorio_dados/app_guia_fontes
+    container_name: app_guia_fontes
+    command: sh -c "serve -s build -l 3000"
+    tty: true
+    networks:
+      - guia_fontes
+    ports:
+      - "3000:3000"
+
+  webserver_guia_fontes:
+    build:
+      context: ./nginx
+    image: escritorio_dados/webserver_guia_fontes
+    container_name: webserver_guia_fontes
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - nginx_web_root:/var/www/html
+      - nginx_certbot_etc:/etc/letsencrypt
+      - nginx_certbot_var:/var/lib/letsencrypt
+    depends_on:
+      - app_guia_fontes
+    environment:
+      - SERVER_NAME=${NGINX_SERVER_NAME}
+      - API_SERVER_NAME=${NGINX_API_SERVER_NAME}
+      - SERVER_IP=${NGINX_SERVER_IP}
+    networks:
+      - guia_fontes
+
+  # certbot_guia_fontes:
+  #   image: certbot/certbot
+  #   container_name: certbot_guia_fontes
+  #   volumes:
+  #     - nginx_web_root:/var/www/html
+  #     - nginx_certbot_etc:/etc/letsencrypt
+  #     - nginx_certbot_var:/var/lib/letsencrypt
+  #   depends_on:
+  #     - webserver_guia_fontes
+  #   networks:
+  #     - guia_fontes
+  #   command: certonly --webroot --webroot-path=/var/www/html --email thiago.mendes@adventistas.org --agree-tos --no-eff-email --force-renewal -d guia_fontes.com -d api.guia_fontes.com
+
+volumes:
+  nginx_web_root:
+    name: guia_fontes_nginx_web_root
+  nginx_certbot_etc:
+    name: guia_fontes_nginx_certbot_etc
+  nginx_certbot_var:
+    name: guia_fontes_nginx_certbot_var
+
+networks:
+  guia_fontes:
+    name: 'guia_fontes'
+    driver: 'bridge'
+
+
+
