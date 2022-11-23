@@ -1,10 +1,16 @@
+import { Home } from '@mui/icons-material';
 import { Box, Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+import { ButtonHome } from '#shared/styledComponents/common';
 
 import comoUtilizarIcon from '#static/home/uso_responsavel_icon.svg';
 
 import { Header, HeaderBackground, HeaderContainer, ConteudoContainer } from './styles';
 
 export function UsoResponsavel() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Header>
@@ -19,6 +25,11 @@ export function UsoResponsavel() {
 
       <ConteudoContainer>
         <Container maxWidth="lg">
+          <ButtonHome variant="outlined" onClick={() => navigate('/')}>
+            <Home />
+            Voltar ao Início
+          </ButtonHome>
+
           <Box>
             <img src={comoUtilizarIcon} />
 

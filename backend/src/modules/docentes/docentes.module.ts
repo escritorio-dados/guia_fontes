@@ -5,6 +5,7 @@ import { AreasAtuacaoModule } from '@modules/areasAtuacao/areasAtuacao.module';
 import { VinculosModule } from '@modules/vinculos/vinculos.module';
 
 import { DocentesController } from './controllers/docentes.controller';
+import { PublicDocentesController } from './controllers/publicDocentes.controller';
 import { Docente } from './entities/Docente';
 import { DocentesRepository } from './repositories/docentes.repository';
 import { CommonDocenteService } from './services/commonDocente.service';
@@ -30,7 +31,7 @@ const services = [
     forwardRef(() => AreasAtuacaoModule),
     forwardRef(() => VinculosModule),
   ],
-  controllers: [DocentesController],
+  controllers: [DocentesController, PublicDocentesController],
   providers: services,
   exports: services,
 })

@@ -6,6 +6,8 @@ import { Contato } from '#modules/home/pages/Contato';
 import { Faq } from '#modules/home/pages/FAQ';
 import { Home } from '#modules/home/pages/Home';
 import { UsoResponsavel } from '#modules/home/pages/UsoResponsavel';
+import { SearchDocentesImprensa } from '#modules/search/pages/Imprensa';
+import { SearchDocentesPesquisa } from '#modules/search/pages/Pesquisa';
 
 import { AdminRoutes } from './admin';
 import { PrivateRoute } from './private';
@@ -24,6 +26,10 @@ export function Router() {
       <Route path="/faq" element={<Faq />} />
 
       <Route path="/auth" element={<Auth />} />
+
+      <Route path="/docentes/imprensa" element={<SearchDocentesImprensa />} />
+
+      <Route path="/docentes/pesquisa" element={<SearchDocentesPesquisa />} />
 
       <Route
         path="/admin/*"

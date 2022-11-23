@@ -20,7 +20,7 @@ export const HeaderContainer = styled(Container)`
 `;
 
 export const Header = styled(Box)`
-  height: 471px;
+  height: 393px;
 
   background: url(${background}) no-repeat;
   background-size: cover;
@@ -38,14 +38,8 @@ export const HeaderBackground = styled(Box)`
   height: 100%;
   z-index: -1;
 
-  background: linear-gradient(
-    180deg,
-    #032860 18.1%,
-    rgba(3, 40, 96, 0.96) 28.17%,
-    rgba(3, 40, 96, 0.92) 37.78%,
-    rgba(3, 40, 96, 0.775723) 52.88%,
-    rgba(3, 40, 96, 0) 107.17%
-  );
+  background: rgba(3, 40, 96, 0.4);
+  backdrop-filter: blur(2.5px);
 `;
 
 export const ConteudoContainer = styled(Box)`

@@ -7,6 +7,7 @@ import { ISortConfig } from '@shared/utils/filter/configSortRepository';
 
 import { Docente } from '../entities/Docente';
 import { FindPaginationDocentesQuery } from '../query/findPagination.docentes.query';
+import { FindPublicDocentesQuery } from '../query/findPublic.docentes.query';
 import { DocentesRepository } from '../repositories/docentes.repository';
 
 @Injectable()
@@ -93,6 +94,25 @@ export class FindAllDocenteService {
     const apiData: IResponsePagination<Docente[]> = {
       pagination: {
         page: query.page,
+        totalResults: total_results,
+        totalPages: Math.ceil(total_results / paginationSizeLarge),
+      },
+      data: docentes,
+    };
+
+    return apiData;
+  }
+
+  async findPublicSearch({ page, imprensa, query }: FindPublicDocentesQuery) {
+    const [docentes, total_results] = await this.docentesRepository.findPublic({
+      page,
+      imprensa,
+      search: query,
+    });
+
+    const apiData: IResponsePagination<Docente[]> = {
+      pagination: {
+        page,
         totalResults: total_results,
         totalPages: Math.ceil(total_results / paginationSizeLarge),
       },

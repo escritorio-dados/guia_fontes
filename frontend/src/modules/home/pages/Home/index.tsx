@@ -8,7 +8,8 @@ import {
   RadioGroup,
   Typography,
 } from '@mui/material';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 import sobreLogo from '#static/home/sobre.svg';
 
@@ -26,6 +27,27 @@ export function Home() {
   const [pesquisa, setPesquisa] = useState('');
   const [grupo, setGrupo] = useState('imprensa');
 
+  const navigate = useNavigate();
+
+  const handleSearch = useCallback(
+    (key: string) => {
+      if (key === 'Enter') {
+        if (grupo === 'imprensa') {
+          navigate({
+            pathname: '/docentes/imprensa',
+            search: `?${createSearchParams({ q: pesquisa })}`,
+          });
+        } else {
+          navigate({
+            pathname: '/docentes/pesquisa',
+            search: `?${createSearchParams({ q: pesquisa })}`,
+          });
+        }
+      }
+    },
+    [grupo, navigate, pesquisa],
+  );
+
   return (
     <>
       <Header>
@@ -34,7 +56,7 @@ export function Home() {
         <HomeContainer maxWidth="lg">
           <Box>
             <Typography component="h1">Guia de Fontes</Typography>
-            <Typography>Seu contato direto com o nosso conteúdo</Typography>
+            <Typography>Encontre o profissional certo para o seu projeto.</Typography>
           </Box>
         </HomeContainer>
       </Header>
@@ -42,27 +64,30 @@ export function Home() {
       <BuscasContainer>
         <Container maxWidth="lg">
           <Box>
+            <Typography component="h4">Procuro profissional para:</Typography>
+
             <FormControl>
               <RadioGroup row value={grupo} onChange={(e) => setGrupo(e.target.value)}>
                 <FormControlLabel
                   value="imprensa"
                   control={<StyledRadio />}
-                  label="Procuro profissional para: Entrevista para imprensa"
+                  label="falar com a  Imprensa"
                 />
 
                 <FormControlLabel
                   value="pesquisa"
                   control={<StyledRadio sx={{ ml: '1rem' }} />}
-                  label="Procuro profissional para: Atividades como palestras, treinamentos e pesquisas"
+                  label="palestras, treinamentos e pesquisas"
                 />
               </RadioGroup>
             </FormControl>
 
             <StyledTextField
-              placeholder="Buscar por: Nome do professor, campus onde ele trabalha, área de conhecimento"
+              placeholder="Buscar por: Nome do professor, campus onde ele trabalha ou área de conhecimento"
               variant="outlined"
               value={pesquisa}
               onChange={(e) => setPesquisa(e.target.value)}
+              onKeyDown={(event) => handleSearch(event.key)}
               fullWidth
               InputProps={{
                 startAdornment: (

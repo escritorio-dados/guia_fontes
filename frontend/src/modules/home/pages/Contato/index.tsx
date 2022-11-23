@@ -1,4 +1,8 @@
+import { Home } from '@mui/icons-material';
 import { Box, Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+import { ButtonHome } from '#shared/styledComponents/common';
 
 import comoUtilizarIcon from '#static/home/contato_icon.svg';
 
@@ -11,6 +15,8 @@ import {
 } from './styles';
 
 export function Contato() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Header>
@@ -25,6 +31,11 @@ export function Contato() {
 
       <ConteudoContainer>
         <Container maxWidth="lg">
+          <ButtonHome variant="outlined" onClick={() => navigate('/')}>
+            <Home />
+            Voltar ao Início
+          </ButtonHome>
+
           <Box>
             <img src={comoUtilizarIcon} />
 

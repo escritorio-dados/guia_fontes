@@ -25,7 +25,7 @@ export const HomeContainer = styled(Container)`
 `;
 
 export const Header = styled(Box)`
-  height: 550px;
+  height: 527px;
 
   background: url(${background}) no-repeat;
   background-size: cover;
@@ -43,12 +43,8 @@ export const HeaderBackground = styled(Box)`
   height: 100%;
   z-index: -1;
 
-  background: linear-gradient(
-    180deg,
-    #032860 14.45%,
-    rgba(3, 40, 96, 0.749283) 58.34%,
-    rgba(3, 40, 96, 0) 131.34%
-  );
+  background: rgba(3, 40, 96, 0.6);
+  backdrop-filter: blur(2.5px);
 `;
 
 export const BuscasContainer = styled(Box)`
@@ -65,6 +61,12 @@ export const BuscasContainer = styled(Box)`
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
+
+      h4 {
+        font-size: 20px;
+        margin-bottom: 1rem;
+      }
     }
   }
 `;

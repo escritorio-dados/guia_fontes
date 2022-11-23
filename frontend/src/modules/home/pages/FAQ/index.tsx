@@ -1,8 +1,14 @@
+import { Home } from '@mui/icons-material';
 import { Box, Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+import { ButtonHome } from '#shared/styledComponents/common';
 
 import { Header, HeaderBackground, HeaderContainer, ConteudoContainer, FaqCard } from './styles';
 
 export function Faq() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Header>
@@ -17,6 +23,13 @@ export function Faq() {
 
       <ConteudoContainer>
         <Container maxWidth="lg">
+          <Box sx={{ width: '70%', margin: 'auto' }}>
+            <ButtonHome variant="outlined" onClick={() => navigate('/')}>
+              <Home />
+              Voltar ao Início
+            </ButtonHome>
+          </Box>
+
           <FaqCard elevation={3}>
             <Typography component="h3">
               Quais professores do UNASP estão vinculados ao Guia de Fontes?
