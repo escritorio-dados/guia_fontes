@@ -45,7 +45,7 @@ services:
   #     - webserver_guia_fontes
   #   networks:
   #     - guia_fontes
-  #   command: certonly --webroot --webroot-path=/var/www/html --email thiago.mendes@adventistas.org --agree-tos --no-eff-email --force-renewal -d guia_fontes.com -d api.guia_fontes.com
+  #   command: certonly --webroot --webroot-path=/var/www/html --email thiago.mendes@adventistas.org --agree-tos --no-eff-email --force-renewal -d guiadefontes.com -d api.guiadefontes.com
 
 volumes:
   nginx_web_root:
