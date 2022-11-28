@@ -98,6 +98,10 @@ export function CreateDocenteModal({ closeModal, openModal, reloadList }: IReloa
         formData.append('contato_assesoria', fixedInput.contato_assesoria);
       }
 
+      if (fixedInput.email_assesoria != null) {
+        formData.append('email_assesoria', fixedInput.email_assesoria);
+      }
+
       if (fixedInput.imprensa === true) {
         formData.append('imprensa', 'true');
       }
@@ -189,6 +193,16 @@ export function CreateDocenteModal({ closeModal, openModal, reloadList }: IReloa
                 label="Contato Assesoria"
                 control={control}
                 errors={errors.contato_assesoria}
+                marginType="no-margin"
+              />
+            </Grid>
+
+            <Grid item sm={6} xs={12}>
+              <FormTextField
+                name="email_assesoria"
+                label="Email Assesoria"
+                control={control}
+                errors={errors.email_assesoria}
                 marginType="no-margin"
               />
             </Grid>

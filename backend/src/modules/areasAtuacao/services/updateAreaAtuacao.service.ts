@@ -19,9 +19,9 @@ export class UpdateAreaAtuacaoService {
     });
 
     areaAtuacao.areaConhecimento = areaConhecimento;
-    areaAtuacao.especialidade = especialidade;
+    areaAtuacao.especialidade = especialidade ?? null;
     areaAtuacao.grandeArea = grandeArea;
-    areaAtuacao.subArea = subArea;
+    areaAtuacao.subArea = subArea ?? null;
 
     return await this.areasAtuacaoRepository.save(areaAtuacao);
   }

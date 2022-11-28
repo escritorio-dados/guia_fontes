@@ -65,7 +65,7 @@ export class CreateDocenteService {
     const areasXml =
       xmlParsed['CURRICULO-VITAE']['DADOS-GERAIS']['AREAS-DE-ATUACAO']?.['AREA-DE-ATUACAO'];
 
-    const { imprensa, contato_assesoria, cpf, nome, vinculos } = body;
+    const { imprensa, contato_assesoria, cpf, nome, vinculos, email_assesoria } = body;
 
     return await this.dataSource.transaction(async (manager) => {
       const docente = await this.docentesRepository.create(
@@ -73,6 +73,7 @@ export class CreateDocenteService {
           imprensa,
           lattesId,
           contatoAssesoria: contato_assesoria,
+          emailAssesoria: email_assesoria,
           cpf,
           nome,
           resumoLattes,

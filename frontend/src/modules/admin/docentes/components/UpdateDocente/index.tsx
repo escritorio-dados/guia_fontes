@@ -100,6 +100,14 @@ export function UpdateDocenteModal({
             />
 
             <FormTextField
+              name="emailAssesoria"
+              label="Email Assesoria"
+              defaultValue={docenteData.emailAssesoria}
+              control={control}
+              errors={errors.emailAssesoria}
+            />
+
+            <FormTextField
               name="lattesId"
               label="Id Lattes"
               defaultValue={docenteData.lattesId}

@@ -18,6 +18,10 @@ export class CreateDocentesXmlDto {
   contato_assesoria: string;
 
   @IsOptional()
+  @IsNotEmpty()
+  email_assesoria: string;
+
+  @IsOptional()
   @IsBoolean()
   @Transform(transformBooleanApi)
   imprensa = false;

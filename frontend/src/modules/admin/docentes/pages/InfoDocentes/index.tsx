@@ -69,6 +69,7 @@ export function InfoDocentes() {
       ...docenteData,
       cpf: docenteData.cpf ?? '-',
       contatoAssesoria: docenteData.contatoAssesoria ?? '-',
+      emailAssesoria: docenteData.emailAssesoria ?? '-',
       lattesId: docenteData.lattesId ?? '-',
       resumoLattes: docenteData.resumoLattes ?? '-',
       imprensa: docenteData.imprensa ? 'Sim' : 'Não',
@@ -176,6 +177,8 @@ export function InfoDocentes() {
           <LabelValue label="CPF:" value={docenteInfo.cpf} />
 
           <LabelValue label="Contato Assesoria:" value={docenteInfo.contatoAssesoria} />
+
+          <LabelValue label="Email Assesoria:" value={docenteInfo.emailAssesoria} />
 
           <LabelValue label="Lattes ID:" value={docenteInfo.lattesId} />
 

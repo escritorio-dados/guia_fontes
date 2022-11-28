@@ -24,6 +24,9 @@ export class Docente {
   @Column({ name: 'contato_assesoria' })
   contatoAssesoria?: string;
 
+  @Column({ name: 'email_assesoria' })
+  emailAssesoria?: string;
+
   @Column({ name: 'lattes_id' })
   lattesId?: string;
 

@@ -6,7 +6,7 @@ import { removeEmptyFields } from '#shared/utils/removeEmptyFields';
 import { IDocentePublic } from '#modules/search/types/IDocente';
 
 import { DocenteInfoModal } from '../DocenteInfoModal';
-import { DocenteContainer, LabelValue, LabelValueBlock } from './styles';
+import { DocenteContainer, LabelValueBlock } from './styles';
 
 interface IDocenteCard {
   docente: IDocentePublic;
@@ -30,12 +30,16 @@ export function DocenteCard({ docente }: IDocenteCard) {
       areas.push(valor);
     });
 
+    const textAreas = areas.join('; ');
+
     return {
       ...docente,
       unidade: docente.vinculos.map(({ unidadeUnasp }) => unidadeUnasp.nome).join('; '),
       resumo:
-        docente.resumoLattes != null ? `${docente.resumoLattes.slice(0, 150)}...` : 'Sem Resumo',
-      areas: areas.join('; '),
+        docente.resumoLattes != null ? `${docente.resumoLattes.slice(0, 120)}...` : 'Sem Resumo',
+      areas: textAreas.length >= 83 ? `${textAreas.slice(0, 80)}...` : textAreas,
+      contatoAssesoria: docente.contatoAssesoria ?? '71 9667-1238',
+      emailAssesoria: docente.emailAssesoria ?? 'ana.silveira@adventistas.org',
     };
   }, [docente]);
 
@@ -50,8 +54,8 @@ export function DocenteCard({ docente }: IDocenteCard) {
       )}
 
       <DocenteContainer elevation={3} onClick={() => setDocenteModal(true)}>
-        <LabelValue>
-          <Typography component="strong">Link Lattes: </Typography>
+        <LabelValueBlock>
+          <Typography component="strong">Currículo lattes: </Typography>
 
           {docenteInfo.lattesId != null ? (
             <Typography
@@ -59,29 +63,37 @@ export function DocenteCard({ docente }: IDocenteCard) {
               href={`http://lattes.cnpq.br/${docenteInfo.lattesId}`}
               target="_blank"
               onClick={(e) => e.stopPropagation()}
-            >{`http://lattes.cnpq.br/${docenteInfo.lattesId}`}</Typography>
+            >
+              {docenteInfo.lattesId}
+            </Typography>
           ) : (
             <Typography>Sem lattes</Typography>
           )}
-        </LabelValue>
+        </LabelValueBlock>
 
-        <LabelValue>
+        <LabelValueBlock>
           <Typography component="strong">Nome: </Typography>
 
           <Typography component="span">{docenteInfo.nome}</Typography>
-        </LabelValue>
+        </LabelValueBlock>
 
-        <LabelValue>
+        <LabelValueBlock>
           <Typography component="strong">Contato da assesoria: </Typography>
 
           <Typography component="span">{docenteInfo.contatoAssesoria}</Typography>
-        </LabelValue>
+        </LabelValueBlock>
 
-        <LabelValue>
+        <LabelValueBlock>
+          <Typography component="strong">Email da assesoria: </Typography>
+
+          <Typography component="span">{docenteInfo.emailAssesoria}</Typography>
+        </LabelValueBlock>
+
+        <LabelValueBlock>
           <Typography component="strong">Unidade do Unasp: </Typography>
 
           <Typography component="span">{docenteInfo.unidade}</Typography>
-        </LabelValue>
+        </LabelValueBlock>
 
         <LabelValueBlock>
           <Typography component="strong">Resumo do curriculo: </Typography>

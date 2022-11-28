@@ -34,11 +34,15 @@ export function DocenteInfoModal({ closeModal, docente_id, openModal }: IInfoDoc
 
     return {
       ...docenteData,
-      contatoAssesoria: docenteData.contatoAssesoria ?? '-',
+      contatoAssesoria: docenteData.contatoAssesoria ?? '71 9667-1238',
+      emailAssesoria: docenteData.emailAssesoria ?? 'ana.silveira@adventistas.org',
       lattesId: docenteData.lattesId ?? '-',
       resumoLattes: docenteData.resumoLattes ?? '-',
-      imprensa: docenteData.imprensa ? 'Sim' : 'Não',
       unidade: docenteData.vinculos.map(({ unidadeUnasp }) => unidadeUnasp.nome).join('; '),
+      areasAtuacao: docenteData.areasAtuacao.map((area) => ({
+        ...area,
+        grandeArea: area.grandeArea.toUpperCase(),
+      })),
     };
   }, [docenteData]);
 
@@ -56,11 +60,11 @@ export function DocenteInfoModal({ closeModal, docente_id, openModal }: IInfoDoc
 
             <LabelValue label="Contato Assesoria:" value={docenteInfo.contatoAssesoria} />
 
+            <LabelValue label="Email Assesoria:" value={docenteInfo.emailAssesoria} />
+
             <LabelValue label="Lattes ID:" value={docenteInfo.lattesId} />
 
             <LabelValue label="Resumo:" value={docenteInfo.resumoLattes} />
-
-            <LabelValue label="Pode falar com imprensa:" value={docenteInfo.imprensa} />
 
             <LabelValue label="Unidades do Unasp:" value={docenteInfo.unidade} />
           </Box>

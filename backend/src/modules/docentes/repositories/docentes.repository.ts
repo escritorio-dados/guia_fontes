@@ -12,6 +12,7 @@ interface ICreateDocente {
   nome: string;
   cpf?: string;
   contatoAssesoria?: string;
+  emailAssesoria?: string;
   lattesId?: string;
   resumoLattes?: string;
   imprensa: boolean;
@@ -67,6 +68,7 @@ export class DocentesRepository {
         'docente.id',
         'docente.nome',
         'docente.contatoAssesoria',
+        'docente.emailAssesoria',
         'docente.lattesId',
         'docente.resumoLattes',
         'docente.imprensa',
@@ -115,6 +117,7 @@ export class DocentesRepository {
         'docente.id',
         'docente.nome',
         'docente.contatoAssesoria',
+        'docente.emailAssesoria',
         'docente.lattesId',
         'docente.resumoLattes',
         'docente.imprensa',

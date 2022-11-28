@@ -4,6 +4,7 @@ export interface IDocenteSchema {
   nome: string;
   cpf?: string;
   contato_assesoria?: string;
+  email_assesoria?: string;
   imprensa?: boolean;
 }
 

@@ -40,8 +40,9 @@ export class UpdateDocenteService {
   async updateDocente({ id, ...input }: IUpdateDocente) {
     const docente = await this.commonDocenteService.getDocente({ id });
 
-    docente.contatoAssesoria = input.contatoAssesoria;
-    docente.cpf = input.cpf;
+    docente.contatoAssesoria = input.contatoAssesoria ?? null;
+    docente.emailAssesoria = input.emailAssesoria ?? null;
+    docente.cpf = input.cpf ?? null;
     docente.imprensa = input.imprensa;
     docente.lattesId = input.lattesId;
     docente.resumoLattes = input.resumoLattes;

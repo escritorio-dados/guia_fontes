@@ -5,6 +5,7 @@ export interface IDocentePublic {
   lattesId?: string;
   resumoLattes?: string;
   contatoAssesoria?: string;
+  emailAssesoria?: string;
   areasAtuacao: Array<{
     id: string;
     areaConhecimento: string;

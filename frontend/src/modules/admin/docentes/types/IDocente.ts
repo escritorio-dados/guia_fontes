@@ -9,6 +9,7 @@ export type IDocente = ICommonApi & {
   lattesId?: string;
   cpf?: string;
   contatoAssesoria?: string;
+  emailAssesoria?: string;
   resumoLattes?: string;
   areasAtuacao: IArea[];
   vinculos: IVinculo[];
@@ -44,6 +45,7 @@ export interface IUpdateDocenteInput {
   nome: string;
   cpf?: string;
   contatoAssesoria?: string;
+  emailAssesoria?: string;
   lattesId?: string;
   resumoLattes?: string;
   imprensa?: boolean;

@@ -14,6 +14,10 @@ export class UpdateDocenteDto {
 
   @IsOptional()
   @IsNotEmpty()
+  emailAssesoria: string;
+
+  @IsOptional()
+  @IsNotEmpty()
   lattesId: string;
 
   @IsOptional()
