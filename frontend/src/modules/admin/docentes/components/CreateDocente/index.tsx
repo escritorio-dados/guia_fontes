@@ -190,7 +190,7 @@ export function CreateDocenteModal({ closeModal, openModal, reloadList }: IReloa
             <Grid item sm={6} xs={12}>
               <FormTextField
                 name="contato_assesoria"
-                label="Contato Assesoria"
+                label="Contato Assessoria"
                 control={control}
                 errors={errors.contato_assesoria}
                 marginType="no-margin"
@@ -200,7 +200,7 @@ export function CreateDocenteModal({ closeModal, openModal, reloadList }: IReloa
             <Grid item sm={6} xs={12}>
               <FormTextField
                 name="email_assesoria"
-                label="Email Assesoria"
+                label="Email Assessoria"
                 control={control}
                 errors={errors.email_assesoria}
                 marginType="no-margin"

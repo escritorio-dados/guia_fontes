@@ -120,7 +120,7 @@ export function ListDocentesFilter({ apiConfig, ...props }: IListFilter<IDocente
           <FormTextField
             control={control}
             name="contato_assesoria"
-            label="Contato Assesoria"
+            label="Contato Assessoria"
             marginType="no-margin"
             defaultValue={apiConfig.filters.contato_assesoria}
             errors={errors.contato_assesoria}

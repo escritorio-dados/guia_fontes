@@ -35,7 +35,7 @@ export const defaultApiConfigDocentes: IPaginationConfig<IDocenteFilters> = {
 const sortTranslator: Record<string, string> = {
   nome: 'Nome',
   lattes_id: 'Lattes Id',
-  contato_assesoria: 'Contato Assesoria',
+  contato_assesoria: 'Contato Assessoria',
   cpf: 'CPF',
   imprensa: 'Falar com Imprensa',
   updated_at: 'Data de Atualização',
@@ -104,7 +104,7 @@ export function ListDocente() {
     return [
       { key: 'nome', header: 'Nome', minWidth: '200px' },
       { key: 'lattesId', header: 'Id Lattes', minWidth: '200px' },
-      { key: 'contatoAssesoria', header: 'Contato Assesoria', minWidth: '200px' },
+      { key: 'contatoAssesoria', header: 'Contato Assessoria', minWidth: '200px' },
       { key: 'cpf', header: 'CPF', minWidth: '200px' },
       { key: 'imprensa', header: 'Imprensa', minWidth: '70px' },
       {

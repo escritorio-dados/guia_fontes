@@ -176,9 +176,9 @@ export function InfoDocentes() {
 
           <LabelValue label="CPF:" value={docenteInfo.cpf} />
 
-          <LabelValue label="Contato Assesoria:" value={docenteInfo.contatoAssesoria} />
+          <LabelValue label="Contato Assessoria:" value={docenteInfo.contatoAssesoria} />
 
-          <LabelValue label="Email Assesoria:" value={docenteInfo.emailAssesoria} />
+          <LabelValue label="Email Assessoria:" value={docenteInfo.emailAssesoria} />
 
           <LabelValue label="Lattes ID:" value={docenteInfo.lattesId} />
 

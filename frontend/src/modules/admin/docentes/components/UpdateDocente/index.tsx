@@ -93,7 +93,7 @@ export function UpdateDocenteModal({
 
             <FormTextField
               name="contatoAssesoria"
-              label="Contato Assesoria"
+              label="Contato Assessoria"
               defaultValue={docenteData.contatoAssesoria}
               control={control}
               errors={errors.contatoAssesoria}
@@ -101,7 +101,7 @@ export function UpdateDocenteModal({
 
             <FormTextField
               name="emailAssesoria"
-              label="Email Assesoria"
+              label="Email Assessoria"
               defaultValue={docenteData.emailAssesoria}
               control={control}
               errors={errors.emailAssesoria}

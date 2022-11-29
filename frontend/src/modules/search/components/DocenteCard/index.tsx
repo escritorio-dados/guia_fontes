@@ -96,7 +96,7 @@ export function DocenteCard({ docente }: IDocenteCard) {
         </LabelValueBlock>
 
         <LabelValueBlock>
-          <Typography component="strong">Contato da asssesoria: </Typography>
+          <Typography component="strong">Contato da assessoria: </Typography>
 
           <Typography component="span">
             {docenteInfo.contatoAssesoria}, {docenteInfo.emailAssesoria}
