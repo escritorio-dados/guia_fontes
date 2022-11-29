@@ -37,7 +37,7 @@ export function DocenteInfoModal({ closeModal, docente_id, openModal }: IInfoDoc
       contatoAssesoria: docenteData.contatoAssesoria ?? '71 9667-1238',
       emailAssesoria: docenteData.emailAssesoria ?? 'ana.silveira@adventistas.org',
       lattesId: docenteData.lattesId ?? '-',
-      resumoLattes: docenteData.resumoLattes ?? '-',
+      resumoLattes: docenteData.resumoLattes?.replaceAll('&#10;', ' ') ?? '-',
       unidade: docenteData.vinculos.map(({ unidadeUnasp }) => unidadeUnasp.nome).join('; '),
       areasAtuacao: docenteData.areasAtuacao.map((area) => ({
         ...area,
@@ -58,28 +58,28 @@ export function DocenteInfoModal({ closeModal, docente_id, openModal }: IInfoDoc
           <Box sx={{ padding: '0.5em' }}>
             <LabelValue label="Nome:" value={docenteInfo.nome} />
 
-            <LabelValue label="Contato Assesoria:" value={docenteInfo.contatoAssesoria} />
-
-            <LabelValue label="Email Assesoria:" value={docenteInfo.emailAssesoria} />
-
             <LabelValue label="Lattes ID:" value={docenteInfo.lattesId} />
 
             <LabelValue label="Resumo:" value={docenteInfo.resumoLattes} />
 
-            <LabelValue label="Unidades do Unasp:" value={docenteInfo.unidade} />
+            <LabelValue label="Unidades do UNASP:" value={docenteInfo.unidade} />
+
+            <LabelValue label="Contato assessoria:" value={docenteInfo.contatoAssesoria} />
+
+            <LabelValue label="E-mail assessoria:" value={docenteInfo.emailAssesoria} />
           </Box>
 
-          <SubTitleBar title="Areas de Atuacação" />
+          <SubTitleBar title="Áreas de atuacação" />
 
           <Grid container spacing={2}>
             {docenteInfo.areasAtuacao.map((area) => (
               <Grid key={area.id} item xs={12} sm={6} md={4}>
                 <Paper elevation={2} sx={{ padding: '0.5rem' }}>
-                  <LabelValue label="Grande Area:" value={area.grandeArea} />
+                  <LabelValue label="Grande área:" value={area.grandeArea} />
 
-                  <LabelValue label="Area de Conhecimento:" value={area.areaConhecimento} />
+                  <LabelValue label="Área de conhecimento:" value={area.areaConhecimento} />
 
-                  <LabelValue label="Sub Area:" value={area.subArea ?? ''} />
+                  <LabelValue label="Sub área:" value={area.subArea ?? ''} />
 
                   <LabelValue label="Especialidade:" value={area.especialidade ?? ''} />
                 </Paper>

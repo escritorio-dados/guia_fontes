@@ -64,14 +64,14 @@ export function Home() {
       <BuscasContainer>
         <Container maxWidth="lg">
           <Box>
-            <Typography component="h4">Procuro profissional para:</Typography>
+            <Typography component="h4">Procuro um profissional para:</Typography>
 
             <FormControl>
               <RadioGroup row value={grupo} onChange={(e) => setGrupo(e.target.value)}>
                 <FormControlLabel
                   value="imprensa"
                   control={<StyledRadio />}
-                  label="falar com a  Imprensa"
+                  label="falar com a imprensa"
                 />
 
                 <FormControlLabel
@@ -83,7 +83,7 @@ export function Home() {
             </FormControl>
 
             <StyledTextField
-              placeholder="Buscar por: Nome do professor, campus onde ele trabalha ou área de conhecimento"
+              placeholder="Buscar por: nome do professor, campus onde ele trabalha ou área de conhecimento"
               variant="outlined"
               value={pesquisa}
               onChange={(e) => setPesquisa(e.target.value)}
@@ -111,15 +111,14 @@ export function Home() {
 
           <Typography>
             O Guia de Fontes do Centro Universitário Adventista de São Paulo busca estabelecer uma
-            ponte entre os pesquisadores do Unasp e a imprensa e a sociedade. Dessa maneira queremos
+            ponte entre os pesquisadores do UNASP, a imprensa e a sociedade. Dessa maneira queremos
             promover a produção de conteúdo de qualidade, a divulgação científica e a transparência
             acadêmica.
           </Typography>
 
           <Typography>
-            Os dados deste Guia de Fontes são extraídos diretamente da plataforma de Currículo
-            Lattes com aprovação do Conselho Nacional de Desenvolvimento Científico e Tecnológico, o
-            CNPq, para o portal do UNASP. O Guia pode ser utilizado por jornalistas, assessores de
+            Os dados deste Guia de Fontes são extraídos diretamente da Plataforma de Currículo
+            Lattes, para o portal do UNASP. O Guia pode ser utilizado por jornalistas, assessores de
             comunicação e outros profissionais comprometidos com a difusão e intercâmbio de dados e
             informações sobre o desenvolvimento da ciência, tecnologia e inovação.
           </Typography>

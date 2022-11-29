@@ -55,7 +55,7 @@ export function DocenteCard({ docente }: IDocenteCard) {
 
       <DocenteContainer elevation={3} onClick={() => setDocenteModal(true)}>
         <LabelValueBlock>
-          <Typography component="strong">Currículo lattes: </Typography>
+          <Typography component="strong">Currículo Lattes: </Typography>
 
           {docenteInfo.lattesId != null ? (
             <Typography
@@ -78,33 +78,29 @@ export function DocenteCard({ docente }: IDocenteCard) {
         </LabelValueBlock>
 
         <LabelValueBlock>
-          <Typography component="strong">Contato da assesoria: </Typography>
-
-          <Typography component="span">{docenteInfo.contatoAssesoria}</Typography>
-        </LabelValueBlock>
-
-        <LabelValueBlock>
-          <Typography component="strong">Email da assesoria: </Typography>
-
-          <Typography component="span">{docenteInfo.emailAssesoria}</Typography>
-        </LabelValueBlock>
-
-        <LabelValueBlock>
-          <Typography component="strong">Unidade do Unasp: </Typography>
+          <Typography component="strong">Unidade do UNASP: </Typography>
 
           <Typography component="span">{docenteInfo.unidade}</Typography>
         </LabelValueBlock>
 
         <LabelValueBlock>
-          <Typography component="strong">Resumo do curriculo: </Typography>
+          <Typography component="strong">Resumo do currículo: </Typography>
 
           <Typography component="span">{docenteInfo.resumo}</Typography>
         </LabelValueBlock>
 
         <LabelValueBlock>
-          <Typography component="strong">Areas de Atuação: </Typography>
+          <Typography component="strong">Áreas de atuação: </Typography>
 
           <Typography component="span">{docenteInfo.areas}</Typography>
+        </LabelValueBlock>
+
+        <LabelValueBlock>
+          <Typography component="strong">Contato da asssesoria: </Typography>
+
+          <Typography component="span">
+            {docenteInfo.contatoAssesoria}, {docenteInfo.emailAssesoria}
+          </Typography>
         </LabelValueBlock>
       </DocenteContainer>
     </>

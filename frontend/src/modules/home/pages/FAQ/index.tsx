@@ -38,7 +38,7 @@ export function Faq() {
             <Typography>
               Todos os professores da instituição estão disponíveis no Guia de Fontes. No entanto,
               na categoria de comunicação com a imprensa são apresentados os professores que possuem
-              certificação de mídia training.
+              certificação de media training.
             </Typography>
           </FaqCard>
 
